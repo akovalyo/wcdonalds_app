@@ -1,70 +1,59 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'theme_helper.dart';
 
 class AppTheme {
   static TextTheme lightTextTheme = TextTheme(
     bodyText1: GoogleFonts.chakraPetch(
       fontSize: 20.0,
-      // fontWeight: FontWeight.w700,
-      color: Colors.black,
+      color: ThemeColors.textL,
     ),
     bodyText2: GoogleFonts.chakraPetch(
       fontSize: 20.0,
-      // fontWeight: FontWeight.w700,
-      color: Colors.black,
+      color: ThemeColors.textL,
     ),
     headline1: GoogleFonts.pressStart2p(
       fontSize: 32.0,
-      // fontWeight: FontWeight.bold,
-      color: Colors.black,
+      color: ThemeColors.textL,
     ),
     headline2: GoogleFonts.pressStart2p(
       fontSize: 21.0,
-      // fontWeight: FontWeight.w700,
-      color: Colors.black,
+      color: ThemeColors.textL,
     ),
     headline3: GoogleFonts.pressStart2p(
       fontSize: 16.0,
-      // fontWeight: FontWeight.w600,
-      color: Colors.black,
+      color: ThemeColors.textL,
     ),
     headline6: GoogleFonts.pressStart2p(
       fontSize: 20.0,
-      // fontWeight: FontWeight.w600,
-      color: Colors.black,
+      color: ThemeColors.textL,
     ),
   );
 
   static TextTheme darkTextTheme = TextTheme(
     bodyText1: GoogleFonts.chakraPetch(
       fontSize: 20.0,
-      // fontWeight: FontWeight.w700,
-      color: Colors.white,
+      color: ThemeColors.textD,
     ),
     bodyText2: GoogleFonts.chakraPetch(
       fontSize: 20.0,
-      // fontWeight: FontWeight.w700,
-      color: Colors.white,
+      color: ThemeColors.textD,
     ),
     headline1: GoogleFonts.pressStart2p(
       fontSize: 32.0,
-      // fontWeight: FontWeight.bold,
-      color: Colors.white,
+      color: ThemeColors.textD,
     ),
     headline2: GoogleFonts.pressStart2p(
       fontSize: 21.0,
-      // fontWeight: FontWeight.w700,
-      color: Colors.white,
+      color: ThemeColors.textD,
     ),
     headline3: GoogleFonts.pressStart2p(
       fontSize: 16.0,
-      // fontWeight: FontWeight.w600,
-      color: Colors.white,
+      color: ThemeColors.textD,
     ),
     headline6: GoogleFonts.pressStart2p(
       fontSize: 20.0,
-      // fontWeight: FontWeight.w600,
-      color: Colors.white,
+      color: ThemeColors.textD,
     ),
   );
 
@@ -73,7 +62,7 @@ class AppTheme {
       brightness: Brightness.light,
       colorScheme: const ColorScheme.light(
         brightness: Brightness.light,
-        secondary: Color(0xfff6d61c),
+        secondary: ThemeColors.secondary,
       ),
       checkboxTheme: CheckboxThemeData(
         fillColor: MaterialStateColor.resolveWith((states) {
@@ -82,15 +71,15 @@ class AppTheme {
       ),
       appBarTheme: const AppBarTheme(
         foregroundColor: Colors.white,
-        backgroundColor: Color(0xffdf330c),
+        backgroundColor: ThemeColors.main,
       ),
       floatingActionButtonTheme: const FloatingActionButtonThemeData(
         foregroundColor: Colors.white,
         backgroundColor: Colors.black,
       ),
       bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-        backgroundColor: Color(0xffdf330c),
-        selectedItemColor: Color(0xfff6d61c),
+        backgroundColor: ThemeColors.main,
+        selectedItemColor: ThemeColors.secondary,
         unselectedItemColor: Colors.white,
       ),
       textTheme: lightTextTheme,
@@ -102,18 +91,20 @@ class AppTheme {
       brightness: Brightness.dark,
       colorScheme: const ColorScheme.light(
         brightness: Brightness.dark,
-        secondary: Color(0xfff6d61c),
+        secondary: ThemeColors.secondary,
       ),
-      appBarTheme: AppBarTheme(
+      appBarTheme: const AppBarTheme(
         foregroundColor: Colors.white,
-        backgroundColor: Colors.grey[900],
+        backgroundColor: ThemeColors.main,
       ),
       floatingActionButtonTheme: const FloatingActionButtonThemeData(
         foregroundColor: Colors.white,
         backgroundColor: Colors.green,
       ),
       bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-        selectedItemColor: Colors.green,
+        backgroundColor: ThemeColors.main,
+        selectedItemColor: ThemeColors.secondary,
+        unselectedItemColor: ThemeColors.textD,
       ),
       textTheme: darkTextTheme,
     );
