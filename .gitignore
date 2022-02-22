@@ -8,7 +8,8 @@
 .buildlog/
 .history
 .svn/
-.xlf
+*.xcf
+AppIcons/
 
 # IntelliJ related
 *.iml
@@ -34,6 +35,7 @@
 
 # Web related
 lib/generated_plugin_registrant.dart
+web/
 
 # Symbolication related
 app.*.symbols

@@ -1,0 +1,45 @@
+name: wcdonalds_app
+description: The best fast food enterprise and burgas flippers of all the metaverse.
+
+publish_to: 'none' 
+
+version: 0.0.0+1
+
+environment:
+  sdk: ">=2.17.0-69.2.beta <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  google_fonts: ^2.1.0
+  http: ^0.13.4
+
+
+ 
+  cupertino_icons: ^1.0.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^1.0.0
+
+flutter:
+
+  uses-material-design: true
+
+  
+  assets:
+    - assets/images/logo_y.png
+    - assets/images/logo_w.png
+    - assets/images/worker_w.png
+    - assets/images/welcome.jpg
+  
+
+  # fonts:
+  #   - family: Schyler
+  #     fonts:
+  #       - asset: fonts/Schyler-Regular.ttf
+  #       - asset: fonts/Schyler-Italic.ttf
+  #         style: italic
+  
