@@ -20,7 +20,7 @@ class Tab {
 class Tabs {
   static final home = Tab(
     label: 'Wcdonalds',
-    widget: const WelcomeTab(),
+    widget: WelcomeTab(),
     icon: const ImageIcon(AssetImage('assets/images/logo_w.png')),
   );
 

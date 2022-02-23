@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:http/http.dart' as http;
 import 'dart:convert' as convert;
 import '../models/worker_nft.dart';
+import 'package:transparent_image/transparent_image.dart';
 
 class WorkersTab extends StatefulWidget {
   const WorkersTab({Key? key}) : super(key: key);
@@ -17,7 +17,6 @@ class _WorkersTabState extends State<WorkersTab> {
   bool _isLoading = false;
   bool _nftLoaded = false;
   late WorkerNft _workerNft;
-  // final Rarity _rarity = Rarity();
   Map<String, dynamic> _rarityDb = {};
   int _searchByIndex = 0;
 
@@ -45,14 +44,10 @@ class _WorkersTabState extends State<WorkersTab> {
       _isLoading = true;
     });
 
-    final url = Uri.parse(
-        'https://testlaunchmynft.mypinata.cloud/ipfs/QmbVfkviPGQYwsxzWimUW8t3WMm8Zk58Fx6HZKA2YWzPHL/$id.json');
-    final response = await http.get(url);
-    if (response.statusCode == 200) {
-      final jsonResponse =
-          convert.jsonDecode(response.body) as Map<String, dynamic>;
+    final metadata = await WorkerNft.queryNftData(id);
+    if (metadata.isNotEmpty) {
       setState(() {
-        _workerNft = WorkerNft.fromJson(jsonResponse, id);
+        _workerNft = WorkerNft.fromJson(metadata, id);
         _nftLoaded = true;
       });
     } else {
@@ -70,56 +65,60 @@ class _WorkersTabState extends State<WorkersTab> {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Container(
-        padding: const EdgeInsets.symmetric(
-          vertical: 20,
-          horizontal: 15,
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Text('Workers Database',
+    return InkWell(
+      overlayColor: MaterialStateProperty.all(Colors.transparent),
+      onTap: () {
+        FocusScope.of(context).unfocus();
+      },
+      child: ListView(
+        children: [
+          const SizedBox(
+            height: 20,
+          ),
+          Center(
+            child: Text('Workers Database',
                 style: Theme.of(context).textTheme.headline3),
-            const SizedBox(
-              height: 20,
-            ),
-            Column(
-              children: [
-                const Text('Search worker by:'),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    ChoiceChip(
-                      label: const Text('by ID'),
-                      selected: _searchByIndex == 0,
-                      onSelected: (value) {
-                        setState(() {
-                          _searchByIndex = 0;
-                        });
-                      },
-                    ),
-                    const SizedBox(
-                      width: 10,
-                    ),
-                    ChoiceChip(
-                      label: const Text('by rarity'),
-                      selected: _searchByIndex == 1,
-                      onSelected: (value) {
-                        setState(() {
-                          _searchByIndex = 1;
-                        });
-                      },
-                    ),
-                  ],
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Form(
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          Column(
+            children: [
+              const Text('Search worker by:'),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ChoiceChip(
+                    label: const Text('by ID'),
+                    selected: _searchByIndex == 0,
+                    onSelected: (value) {
+                      setState(() {
+                        _searchByIndex = 0;
+                      });
+                    },
+                  ),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  ChoiceChip(
+                    label: const Text('by rarity'),
+                    selected: _searchByIndex == 1,
+                    onSelected: (value) {
+                      setState(() {
+                        _searchByIndex = 1;
+                      });
+                    },
+                  ),
+                ],
+              ),
+            ],
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          Align(
+            alignment: Alignment.center,
+            child: Form(
               key: _formKey,
               child: Container(
                 constraints: const BoxConstraints(maxWidth: 200),
@@ -162,7 +161,9 @@ class _WorkersTabState extends State<WorkersTab> {
                 ),
               ),
             ),
-            TextButton(
+          ),
+          Center(
+            child: TextButton(
               onPressed: () {
                 if (_formKey.currentState!.validate()) {
                   String id = _workerIdController.text;
@@ -177,38 +178,44 @@ class _WorkersTabState extends State<WorkersTab> {
               },
               child: const Text('Submit'),
             ),
-            const SizedBox(
-              height: 20,
-            ),
-            _isLoading ? const CircularProgressIndicator() : Container(),
-            _nftLoaded
-                ? Expanded(
-                    child: ListView(
-                      children: [
-                        Center(
-                          child: Text('Wcdonalds Worker #${_workerNft.id}',
-                              textAlign: TextAlign.center,
-                              style: Theme.of(context).textTheme.headline3),
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        Center(
-                          child: Image(
-                            image: NetworkImage(_workerNft.imageUrl),
-                            fit: BoxFit.fill,
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        Center(child: Text('Rank: ${_workerNft.rarity}')),
-                      ],
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          _isLoading
+              ? Align(
+                  alignment: Alignment.center,
+                  // ignore: sized_box_for_whitespace
+                  child: Container(
+                      width: 50,
+                      height: 50,
+                      child: const CircularProgressIndicator()),
+                )
+              : Container(),
+          _nftLoaded
+              ? Column(
+                  children: [
+                    Center(
+                      child: Text('Wcdonalds Worker #${_workerNft.id}',
+                          textAlign: TextAlign.center,
+                          style: Theme.of(context).textTheme.headline3),
                     ),
-                  )
-                : Container(),
-          ],
-        ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Center(
+                      child: FadeInImage.memoryNetwork(
+                          placeholder: kTransparentImage,
+                          image: _workerNft.imageUrl),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Center(child: Text('Rank: ${_workerNft.rarity}')),
+                  ],
+                )
+              : Container(),
+        ],
       ),
     );
   }

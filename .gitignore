@@ -10,6 +10,7 @@
 .svn/
 *.xcf
 AppIcons/
+hidden/
 
 # IntelliJ related
 *.iml

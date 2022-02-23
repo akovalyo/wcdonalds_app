@@ -19,6 +19,8 @@ dependencies:
   cupertino_icons: ^1.0.2
   webview_flutter: ^3.0.0
   package_info_plus: ^1.4.0
+  flutter_staggered_grid_view: ^0.6.1
+  transparent_image: ^2.0.0
 
 dev_dependencies:
   flutter_test:
@@ -35,7 +37,7 @@ flutter:
     - assets/images/logo_y.png
     - assets/images/logo_w.png
     - assets/images/worker_w.png
-    - assets/images/welcome.jpg
+    - assets/images/welcome.png
     - assets/images/wcdonalds.png
     - assets/data/rarity.json
   
