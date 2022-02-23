@@ -18,6 +18,7 @@ dependencies:
   go_router: ^3.0.1
   cupertino_icons: ^1.0.2
   webview_flutter: ^3.0.0
+  package_info_plus: ^1.4.0
 
 dev_dependencies:
   flutter_test:
@@ -36,6 +37,7 @@ flutter:
     - assets/images/worker_w.png
     - assets/images/welcome.jpg
     - assets/images/wcdonalds.png
+    - assets/data/rarity.json
   
 
   # fonts:
