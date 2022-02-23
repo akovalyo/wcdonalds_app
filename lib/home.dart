@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 import 'tabs/tabs.dart';
-import 'models/app_state.dart';
 import 'widgets/wc_bar.dart';
 import 'theme/theme.dart';
 import 'widgets/wc_drawer.dart';
@@ -26,7 +24,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final appState = context.watch<AppState>();
     return Scaffold(
       appBar: PreferredSize(
         child: const WcBar(),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'appCache.dart';
+import 'app_cache.dart';
 
 class AppState with ChangeNotifier {
   bool _isDarkTheme = false;
@@ -9,6 +9,7 @@ class AppState with ChangeNotifier {
 
   void initializeApp() async {
     _isDarkTheme = await _appCache.isDarkTheme();
+    notifyListeners();
   }
 
   void changeTheme() async {

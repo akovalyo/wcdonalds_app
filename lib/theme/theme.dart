@@ -140,6 +140,14 @@ class AppTheme {
         selectedItemColor: ThemeColors.secondary,
         unselectedItemColor: ThemeColors.textD,
       ),
+      switchTheme: SwitchThemeData(
+        thumbColor: MaterialStateProperty.all(ThemeColors.secondary),
+        overlayColor:
+            MaterialStateProperty.all(ThemeColors.secondary.withOpacity(0.5)),
+        trackColor: MaterialStateProperty.all(
+          const Color(0xFFA8962C),
+        ),
+      ),
       textTheme: darkTextTheme,
     );
   }
