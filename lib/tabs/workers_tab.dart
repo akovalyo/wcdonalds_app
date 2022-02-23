@@ -71,36 +71,41 @@ class _WorkersTabState extends State<WorkersTab> {
             ),
             Form(
               key: _formKey,
-              child: TextFormField(
-                decoration: const InputDecoration(
-                  contentPadding: EdgeInsets.only(
-                    top: 28,
-                    left: 10,
+              child: Container(
+                constraints: const BoxConstraints(maxWidth: 200),
+                child: TextFormField(
+                  decoration: InputDecoration(
+                    floatingLabelStyle:
+                        TextStyle(color: Theme.of(context).colorScheme.primary),
+                    focusedBorder: const OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.yellow),
+                    ),
+                    contentPadding: const EdgeInsets.only(
+                      top: 28,
+                      left: 10,
+                    ),
+                    border: OutlineInputBorder(),
+                    label: Text('Enter Worker\'s ID:'),
                   ),
-                  border: OutlineInputBorder(),
-                  label: Text('Enter Worker\'s ID:'),
+                  autofocus: false,
+                  autocorrect: false,
+                  keyboardType: TextInputType.number,
+                  controller: _workerIdController,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Value required';
+                    }
+                    if (value.contains(RegExp(r'[A-Za-z]'))) {
+                      return 'Only numbers are allowed';
+                    }
+                    final int id = int.parse(value);
+                    if (id < 0 || id > 2221) {
+                      return 'Only ID between 0 and 2221';
+                    }
+                    return null;
+                  },
                 ),
-                autofocus: false,
-                autocorrect: false,
-                keyboardType: TextInputType.number,
-                controller: _workerIdController,
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Value required';
-                  }
-                  if (value.contains(RegExp(r'[A-Za-z]'))) {
-                    return 'Only numbers are allowed';
-                  }
-                  final int id = int.parse(value);
-                  if (id < 0 || id > 2221) {
-                    return 'Only ID between 0 and 2221';
-                  }
-                  return null;
-                },
               ),
-            ),
-            const SizedBox(
-              height: 20,
             ),
             TextButton(
               onPressed: () {

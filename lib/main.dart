@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
 import 'theme/theme.dart';
 import 'home.dart';
+import 'models/app_state.dart';
 
 void main() {
   runApp(const WcdonaldsApp());
@@ -11,12 +14,17 @@ class WcdonaldsApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Welcome to Wcdonalds!',
-      theme: AppTheme.light(),
-      darkTheme: AppTheme.dark(),
-      home: const HomeScreen(),
-      debugShowCheckedModeBanner: false,
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => AppState()),
+      ],
+      child: MaterialApp(
+        title: 'Welcome to Wcdonalds!',
+        theme: AppTheme.light(),
+        darkTheme: AppTheme.dark(),
+        home: const HomeScreen(),
+        debugShowCheckedModeBanner: false,
+      ),
     );
   }
 }

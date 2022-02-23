@@ -62,6 +62,8 @@ class AppTheme {
       brightness: Brightness.light,
       colorScheme: const ColorScheme.light(
         brightness: Brightness.light,
+        background: ThemeColors.backgroundL,
+        primary: ThemeColors.textL,
         secondary: ThemeColors.secondary,
       ),
       checkboxTheme: CheckboxThemeData(
@@ -75,12 +77,25 @@ class AppTheme {
       ),
       floatingActionButtonTheme: const FloatingActionButtonThemeData(
         foregroundColor: Colors.white,
-        backgroundColor: Colors.black,
+        backgroundColor: ThemeColors.main,
       ),
       bottomNavigationBarTheme: const BottomNavigationBarThemeData(
         backgroundColor: ThemeColors.main,
         selectedItemColor: ThemeColors.secondary,
         unselectedItemColor: Colors.white,
+      ),
+      textButtonTheme: TextButtonThemeData(
+        style: ButtonStyle(
+          overlayColor: MaterialStateProperty.all(Colors.transparent),
+          foregroundColor: MaterialStateProperty.all(ThemeColors.main),
+          textStyle: MaterialStateProperty.all(
+            const TextStyle(
+              fontSize: 18,
+              decoration: TextDecoration.underline,
+              color: ThemeColors.main,
+            ),
+          ),
+        ),
       ),
       textTheme: lightTextTheme,
     );
@@ -91,15 +106,30 @@ class AppTheme {
       brightness: Brightness.dark,
       colorScheme: const ColorScheme.light(
         brightness: Brightness.dark,
+        background: ThemeColors.backgroundD,
+        primary: ThemeColors.textD,
         secondary: ThemeColors.secondary,
       ),
       appBarTheme: const AppBarTheme(
         foregroundColor: Colors.white,
         backgroundColor: ThemeColors.main,
       ),
+      textButtonTheme: TextButtonThemeData(
+        style: ButtonStyle(
+          overlayColor: MaterialStateProperty.all(Colors.transparent),
+          foregroundColor: MaterialStateProperty.all(ThemeColors.secondary),
+          textStyle: MaterialStateProperty.all(
+            const TextStyle(
+              fontSize: 18,
+              decoration: TextDecoration.underline,
+              color: ThemeColors.secondary,
+            ),
+          ),
+        ),
+      ),
       floatingActionButtonTheme: const FloatingActionButtonThemeData(
-        foregroundColor: Colors.white,
-        backgroundColor: Colors.green,
+        foregroundColor: ThemeColors.textD,
+        backgroundColor: ThemeColors.main,
       ),
       bottomNavigationBarTheme: const BottomNavigationBarThemeData(
         backgroundColor: ThemeColors.main,

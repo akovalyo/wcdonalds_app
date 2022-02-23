@@ -1,14 +1,20 @@
 import 'package:flutter/material.dart';
 
+const Set<MaterialState> interactiveStates = <MaterialState>{
+  MaterialState.pressed,
+  MaterialState.hovered,
+  MaterialState.focused,
+};
+
 class ThemeColors {
-  static const main = Color(0xffdf330c);
-  static const secondary = Color(0xfff6d61c);
+  static const Color main = Color(0xffdf330c);
+  static const Color secondary = Color(0xfff6d61c);
 
   //Light theme
-  static const backgroundL = Colors.white;
-  static const textL = Colors.black;
+  static const Color backgroundL = Colors.white;
+  static const Color textL = Colors.black;
 
   //Dark theme
-  static final backgroundD = Colors.grey[900];
-  static const textD = Color.fromARGB(255, 224, 224, 224);
+  static const Color backgroundD = Color(0xFF212121);
+  static const Color textD = Color(0xFFE0E0E0);
 }
