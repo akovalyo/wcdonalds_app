@@ -75,8 +75,8 @@ class _WorkersTabState extends State<WorkersTab> {
                 constraints: const BoxConstraints(maxWidth: 200),
                 child: TextFormField(
                   decoration: InputDecoration(
-                    floatingLabelStyle:
-                        TextStyle(color: Theme.of(context).colorScheme.primary),
+                    floatingLabelStyle: TextStyle(
+                        color: Theme.of(context).colorScheme.tertiary),
                     focusedBorder: const OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.yellow),
                     ),

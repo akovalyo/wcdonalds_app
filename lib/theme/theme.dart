@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'theme_helper.dart';
 
+const double wcBarHeight = 55.0;
+
 class AppTheme {
   static TextTheme lightTextTheme = TextTheme(
     bodyText1: GoogleFonts.chakraPetch(
@@ -63,8 +65,9 @@ class AppTheme {
       colorScheme: const ColorScheme.light(
         brightness: Brightness.light,
         background: ThemeColors.backgroundL,
-        primary: ThemeColors.textL,
+        primary: ThemeColors.main,
         secondary: ThemeColors.secondary,
+        tertiary: ThemeColors.textL,
       ),
       checkboxTheme: CheckboxThemeData(
         fillColor: MaterialStateColor.resolveWith((states) {
@@ -107,8 +110,9 @@ class AppTheme {
       colorScheme: const ColorScheme.light(
         brightness: Brightness.dark,
         background: ThemeColors.backgroundD,
-        primary: ThemeColors.textD,
+        primary: ThemeColors.main,
         secondary: ThemeColors.secondary,
+        tertiary: ThemeColors.textD,
       ),
       appBarTheme: const AppBarTheme(
         foregroundColor: Colors.white,
