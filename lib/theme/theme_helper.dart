@@ -11,10 +11,10 @@ class ThemeColors {
   static const Color secondary = Color(0xfff6d61c);
 
   //Light theme
-  static const Color backgroundL = Colors.white;
+  static const Color backgroundL = Color.fromARGB(255, 255, 232, 232);
   static const Color textL = Colors.black;
 
   //Dark theme
-  static const Color backgroundD = Color(0xFF212121);
+  static const Color backgroundD = Color(0xFF303030);
   static const Color textD = Color(0xFFE0E0E0);
 }

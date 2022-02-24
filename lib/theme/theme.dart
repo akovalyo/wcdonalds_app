@@ -62,12 +62,16 @@ class AppTheme {
   static ThemeData light() {
     return ThemeData(
       brightness: Brightness.light,
+      scaffoldBackgroundColor: ThemeColors.backgroundL,
       colorScheme: const ColorScheme.light(
         brightness: Brightness.light,
         background: ThemeColors.backgroundL,
         primary: ThemeColors.main,
         secondary: ThemeColors.secondary,
         tertiary: ThemeColors.textL,
+      ),
+      drawerTheme: const DrawerThemeData(
+        backgroundColor: ThemeColors.backgroundL,
       ),
       checkboxTheme: CheckboxThemeData(
         fillColor: MaterialStateColor.resolveWith((states) {
@@ -107,12 +111,16 @@ class AppTheme {
   static ThemeData dark() {
     return ThemeData(
       brightness: Brightness.dark,
+      scaffoldBackgroundColor: ThemeColors.backgroundD,
       colorScheme: const ColorScheme.light(
         brightness: Brightness.dark,
         background: ThemeColors.backgroundD,
         primary: ThemeColors.main,
         secondary: ThemeColors.secondary,
         tertiary: ThemeColors.textD,
+      ),
+      drawerTheme: const DrawerThemeData(
+        backgroundColor: ThemeColors.backgroundD,
       ),
       appBarTheme: const AppBarTheme(
         foregroundColor: Colors.white,

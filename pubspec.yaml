@@ -39,7 +39,10 @@ flutter:
     - assets/images/worker_w.png
     - assets/images/welcome.png
     - assets/images/wcdonalds.png
+    - assets/images/wcdollar.png
+    - assets/images/faq.png
     - assets/data/rarity.json
+    
   
 
   # fonts:

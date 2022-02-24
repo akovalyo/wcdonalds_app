@@ -204,9 +204,13 @@ class _WorkersTabState extends State<WorkersTab> {
                       height: 10,
                     ),
                     Center(
-                      child: FadeInImage.memoryNetwork(
-                          placeholder: kTransparentImage,
-                          image: _workerNft.imageUrl),
+                      child: ClipRRect(
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(15)),
+                        child: FadeInImage.memoryNetwork(
+                            placeholder: kTransparentImage,
+                            image: _workerNft.imageUrl),
+                      ),
                     ),
                     const SizedBox(
                       height: 10,

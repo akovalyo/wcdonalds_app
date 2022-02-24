@@ -1,7 +1,7 @@
+import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:transparent_image/transparent_image.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'dart:math';
 
 import '../models/worker_nft.dart';
 
@@ -14,18 +14,49 @@ class WelcomeTab extends StatefulWidget {
 
 class _WelcomeTabState extends State<WelcomeTab> {
   final List<Widget> list = [
-    const Image(
-      image: AssetImage('assets/images/welcome.png'),
-      width: 50,
+    Container(
+      color: const Color(0xFF303030),
+      child: const Image(
+        image: AssetImage('assets/images/welcome.png'),
+        width: 50,
+      ),
     ),
     Container(
       color: Colors.green,
     ),
     Container(
       color: Colors.blue[300],
+      child: Center(
+          child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: const [
+          Text('FAQ',
+              style: TextStyle(
+                color: Color(0xfff6d61c),
+              )),
+          SizedBox(height: 10),
+          Image(
+            image: AssetImage('assets/images/faq.png'),
+          ),
+        ],
+      )),
     ),
     Container(
       color: Colors.deepOrange[300],
+      child: Center(
+          child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: const [
+          Text('TOKENOMICS',
+              style: TextStyle(
+                color: Color(0xfff6d61c),
+              )),
+          SizedBox(height: 10),
+          Image(
+            image: AssetImage('assets/images/wcdollar.png'),
+          ),
+        ],
+      )),
     ),
   ];
 
@@ -44,10 +75,6 @@ class _WelcomeTabState extends State<WelcomeTab> {
     });
   }
 
-  // void replaceImage() async {
-  //   final newUrl = await randomImage()
-  // }
-
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -59,7 +86,7 @@ class _WelcomeTabState extends State<WelcomeTab> {
             mainAxisSpacing: 8,
             crossAxisSpacing: 8,
             children: [
-              //Welcome
+              // Welcome
               StaggeredGridTile.count(
                 crossAxisCellCount: 3,
                 mainAxisCellCount: 1,
@@ -87,16 +114,16 @@ class _WelcomeTabState extends State<WelcomeTab> {
                 ),
               ),
 
-              //Green
+              //Orange
               StaggeredGridTile.count(
                 crossAxisCellCount: 3,
                 mainAxisCellCount: 2,
-                child: list[1],
+                child: list[3],
               ),
               //Blue
               StaggeredGridTile.count(
                 crossAxisCellCount: 2,
-                mainAxisCellCount: 3,
+                mainAxisCellCount: 4,
                 child: list[2],
               ),
 
@@ -120,98 +147,16 @@ class _WelcomeTabState extends State<WelcomeTab> {
                   ),
                 ),
               ),
-              //Orange
-              StaggeredGridTile.count(
-                crossAxisCellCount: 2,
-                mainAxisCellCount: 1,
-                child: list[3],
-              ),
+              // //Green
+              // StaggeredGridTile.count(
+              //   crossAxisCellCount: 2,
+              //   mainAxisCellCount: 1,
+              //   child: list[1],
+              // ),
             ],
           ),
         ],
       ),
     );
-    // double width = MediaQuery.of(context).size.width;
-    // final double padding = 15.0;
-    // final Size screenSize = MediaQuery.of(context).size;
-    // final double availableHeight = screenSize.height -
-    //     wcBarHeight -
-    //     MediaQuery.of(context).padding.top -
-    //     MediaQuery.of(context).padding.bottom -
-    //     padding * 10;
-    // final double availableWidth = screenSize.width - padding * 2;
-    // return Align(
-    //   alignment: Alignment.center,
-    //   child: Container(
-    //     padding: EdgeInsets.all(padding),
-    //     height: availableHeight,
-    //     width: availableWidth,
-    //     color: Colors.blue,
-    //   ),
-    // );
-
-    // ListView(
-    //   padding: const EdgeInsets.only(top: 20),
-    //   children: [
-    //     StaggeredGrid.count(
-    //       crossAxisCount: 4,
-    //       mainAxisSpacing: 6,
-    //       crossAxisSpacing: 6,
-    //       children: [
-    //         StaggeredGridTile.count(
-    //           crossAxisCellCount: 2,
-    //           mainAxisCellCount: 2,
-    //           child: Container(
-    //             color: Colors.yellow,
-    //           ),
-    //         ),
-    //         StaggeredGridTile.count(
-    //           crossAxisCellCount: 2,
-    //           mainAxisCellCount: 1,
-    //           child: Container(
-    //             color: Colors.red,
-    //           ),
-    //         ),
-    //         StaggeredGridTile.count(
-    //           crossAxisCellCount: 1,
-    //           mainAxisCellCount: 1,
-    //           child: Container(
-    //             color: Colors.green,
-    //           ),
-    //         ),
-    //         StaggeredGridTile.count(
-    //           crossAxisCellCount: 1,
-    //           mainAxisCellCount: 1,
-    //           child: Container(
-    //             color: Colors.blue,
-    //           ),
-    //         ),
-    //         StaggeredGridTile.count(
-    //           crossAxisCellCount: 4,
-    //           mainAxisCellCount: 2,
-    //           child: Container(
-    //             color: Colors.red,
-    //           ),
-    //         ),
-    //       ],
-    //     ),
-
-    // Align(
-    //   alignment: Alignment.center,
-    //   child: Image(
-    //     image: const AssetImage('assets/images/logo_y.png'),
-    //     width: 0.2 * width,
-    //   ),
-    // ),
-    // const SizedBox(
-    //   height: 20,
-    // ),
-    // Center(
-    //     child: Text(
-    //   'Welcome to Wcdonalds!',
-    //   style: Theme.of(context).textTheme.headline3,
-    // ),),
-    // ],
-    // );
   }
 }
