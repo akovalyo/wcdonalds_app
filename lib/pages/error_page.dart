@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../navigation/routes.dart';
-
 class ErrorPage extends StatelessWidget {
   const ErrorPage({Key? key}) : super(key: key);
 
-  static MaterialPage page({LocalKey? key}) => MaterialPage(
-        name: Routes.error,
+  static Page page({LocalKey? key}) => MaterialPage<void>(
         key: key,
         child: const ErrorPage(),
       );

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:flutter/scheduler.dart' show timeDilation;
 
 import '../widgets/wc_drawer.dart';
@@ -8,8 +9,7 @@ import '../navigation/routes.dart';
 class TokenomicsPage extends StatelessWidget {
   const TokenomicsPage({Key? key}) : super(key: key);
 
-  static MaterialPage page({LocalKey? key}) => MaterialPage(
-        name: Routes.tokenomics,
+  static Page page({LocalKey? key}) => MaterialPage<void>(
         key: key,
         child: const TokenomicsPage(),
       );
@@ -30,7 +30,7 @@ class TokenomicsPage extends StatelessWidget {
                 showBackButton: true,
                 color: const Color(0xFFFF8A65),
                 onTap: () {
-                  Navigator.pop(context);
+                  Routes.popPageHandler(context, Routes.home.path);
                 },
               ),
             ),

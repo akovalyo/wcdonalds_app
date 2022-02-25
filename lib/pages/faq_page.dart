@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart' show timeDilation;
+import 'package:go_router/go_router.dart';
 
 import '../widgets/wc_drawer.dart';
 import 'headers/hero_header.dart';
@@ -8,13 +9,10 @@ import '../navigation/routes.dart';
 class FaqPage extends StatelessWidget {
   const FaqPage({Key? key}) : super(key: key);
 
-  static MaterialPage page({LocalKey? key}) => MaterialPage(
-        name: Routes.tokenomics,
+  static Page page({LocalKey? key}) => MaterialPage<void>(
         key: key,
         child: const FaqPage(),
       );
-
-  //TODO: static MaterialPageRoute ...
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +30,7 @@ class FaqPage extends StatelessWidget {
                 showBackButton: true,
                 color: const Color(0xFF64B5F6),
                 onTap: () {
-                  Navigator.pop(context);
+                  Routes.popPageHandler(context, Routes.home.path);
                 },
               ),
             ),

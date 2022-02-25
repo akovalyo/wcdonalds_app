@@ -3,11 +3,11 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:transparent_image/transparent_image.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:go_router/go_router.dart';
 
 import '../models/worker_nft.dart';
-import '../pages/pages.dart';
-import '../pages/headers/hero_header.dart';
 import '../navigation/routes.dart';
+import '../pages/headers/hero_header.dart';
 
 class WelcomeTab extends StatefulWidget {
   const WelcomeTab({Key? key}) : super(key: key);
@@ -124,12 +124,8 @@ class _WelcomeTabState extends State<WelcomeTab> {
         image: 'assets/images/faq.png',
         color: const Color(0xFF64B5F6),
         onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => const FaqPage(),
-            ),
-          );
+          // context.push(Routes.faq.path);
+          context.go(Routes.faq.path);
         },
       ),
     );
@@ -143,12 +139,8 @@ class _WelcomeTabState extends State<WelcomeTab> {
         image: 'assets/images/wcdollar.png',
         color: const Color(0xFFFF8A65),
         onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => const TokenomicsPage(),
-            ),
-          );
+          context.push(Routes.tokenomics.path);
+          // context.go(Routes.tokenomics.path);
         },
       ),
     );

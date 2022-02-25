@@ -4,13 +4,11 @@ import '../tabs/tabs.dart';
 import '../widgets/wc_bar.dart';
 import '../theme/theme.dart';
 import '../widgets/wc_drawer.dart';
-import '../navigation/routes.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
-  static MaterialPage page({LocalKey? key}) => MaterialPage(
-        name: Routes.tokenomics,
+  static Page page({LocalKey? key}) => MaterialPage<void>(
         key: key,
         child: const HomePage(),
       );
