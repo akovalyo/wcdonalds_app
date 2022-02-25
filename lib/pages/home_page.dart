@@ -1,18 +1,23 @@
 import 'package:flutter/material.dart';
 
-import 'tabs/tabs.dart';
-import 'widgets/wc_bar.dart';
-import 'theme/theme.dart';
-import 'widgets/wc_drawer.dart';
+import '../tabs/tabs.dart';
+import '../widgets/wc_bar.dart';
+import '../theme/theme.dart';
+import '../widgets/wc_drawer.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+class HomePage extends StatefulWidget {
+  const HomePage({Key? key}) : super(key: key);
+
+  static Page page({LocalKey? key}) => MaterialPage<void>(
+        key: key,
+        child: const HomePage(),
+      );
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<HomePage> createState() => _HomePageState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
   final List<Widget> tabs = Tabs.listWidgets();
 

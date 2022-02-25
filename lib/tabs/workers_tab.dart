@@ -89,7 +89,7 @@ class _WorkersTabState extends State<WorkersTab> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   ChoiceChip(
-                    label: const Text('by ID'),
+                    label: const Text('ID'),
                     selected: _searchByIndex == 0,
                     onSelected: (value) {
                       setState(() {
@@ -101,7 +101,7 @@ class _WorkersTabState extends State<WorkersTab> {
                     width: 10,
                   ),
                   ChoiceChip(
-                    label: const Text('by rarity'),
+                    label: const Text('rarity'),
                     selected: _searchByIndex == 1,
                     onSelected: (value) {
                       setState(() {

@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:go_router/go_router.dart';
 
 import 'theme/theme.dart';
-import 'home.dart';
+import 'pages/home_page.dart';
 import 'models/app_state.dart';
+import 'navigation/routes.dart';
+import 'pages/error_page.dart';
+import 'navigation/redirector.dart';
 
 void main() {
   runApp(const WcdonaldsApp());
@@ -18,10 +22,29 @@ class WcdonaldsApp extends StatefulWidget {
 
 class _WcdonaldsAppState extends State<WcdonaldsApp> {
   final _appState = AppState();
+  late GoRouter _goRouter;
 
   @override
   void initState() {
     _appState.initializeApp();
+    _goRouter = GoRouter(
+        initialLocation: Routes.home.path,
+        routes: [
+          Routes.home,
+          Routes.error,
+          Routes.tokenomics,
+          Routes.faq,
+        ],
+        refreshListenable: _appState,
+        debugLogDiagnostics: true,
+        urlPathStrategy: UrlPathStrategy.path,
+        redirect: (GoRouterState state) {
+          return Redirector.instance.redirect(state, _appState);
+        },
+        errorPageBuilder: (BuildContext context, GoRouterState state) {
+          return ErrorPage.page(key: state.pageKey);
+        });
+
     super.initState();
   }
 
@@ -36,10 +59,11 @@ class _WcdonaldsAppState extends State<WcdonaldsApp> {
           ThemeData theme =
               appState.isDarkTheme ? AppTheme.dark() : AppTheme.light();
 
-          return MaterialApp(
+          return MaterialApp.router(
             title: 'Welcome to Wcdonalds!',
             theme: theme,
-            home: const HomeScreen(),
+            routerDelegate: _goRouter.routerDelegate,
+            routeInformationParser: _goRouter.routeInformationParser,
             debugShowCheckedModeBanner: false,
           );
         },
