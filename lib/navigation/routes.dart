@@ -7,9 +7,16 @@ import '../models/web_view_extra_wrapper.dart';
 import '../pages/pages.dart';
 
 class Routes {
+  static final splash = GoRoute(
+    name: 'splash',
+    path: '/',
+    pageBuilder: (BuildContext context, GoRouterState state) =>
+        SplashPage.page(key: state.pageKey),
+  );
+
   static final home = GoRoute(
     name: 'home',
-    path: '/',
+    path: '/home',
     pageBuilder: (BuildContext context, GoRouterState state) =>
         HomePage.page(key: state.pageKey),
   );

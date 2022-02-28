@@ -6,5 +6,5 @@ abstract class Redirect {
   ///Checks if current redirection should take place
   bool check(GoRouterState state, AppState appState);
 
-  Uri? getUri(GoRouterState satte, AppState appState);
+  Uri? getUri(GoRouterState state, AppState appState);
 }
