@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:wcdonalds_app/models/web_view_extra_wrapper.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
+import '../models/web_view_extra_wrapper.dart';
 import '../pages/pages.dart';
 
 class Routes {
@@ -33,6 +36,16 @@ class Routes {
     path: '/faq',
     pageBuilder: (BuildContext context, GoRouterState state) => FaqPage.page(
       key: state.pageKey,
+    ),
+  );
+
+  static final webView = GoRoute(
+    name: 'web',
+    path: '/web',
+    pageBuilder: (BuildContext context, GoRouterState state) =>
+        WebViewPage.page(
+      key: state.pageKey,
+      extra: state.extra! as WebViewExtraWrapper,
     ),
   );
 

@@ -1,6 +1,6 @@
 import 'package:go_router/go_router.dart';
 
-import '../interfaces/redirect.dart';
+import '../interfaces/redirect_interface.dart';
 import '../models/app_state.dart';
 
 class Redirector {

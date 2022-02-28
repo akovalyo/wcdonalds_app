@@ -34,6 +34,7 @@ class _WcdonaldsAppState extends State<WcdonaldsApp> {
           Routes.error,
           Routes.tokenomics,
           Routes.faq,
+          Routes.webView,
         ],
         refreshListenable: _appState,
         debugLogDiagnostics: true,

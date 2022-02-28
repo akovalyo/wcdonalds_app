@@ -4,10 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:transparent_image/transparent_image.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:go_router/go_router.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
 import '../models/worker_nft.dart';
 import '../navigation/routes.dart';
 import '../pages/headers/hero_header.dart';
+import '../models/web_view_extra_wrapper.dart';
 
 class WelcomeTab extends StatefulWidget {
   const WelcomeTab({Key? key}) : super(key: key);
@@ -195,13 +197,24 @@ class _WelcomeTabState extends State<WelcomeTab> {
   }
 
   Widget buildWebsiteTile(BuildContext context) {
+    final WebViewExtraWrapper web = WebViewExtraWrapper(
+        title: 'wcdonalds.io',
+        webView: const WebView(
+          initialUrl: 'https://wcdonalds.io',
+          javascriptMode: JavascriptMode.unrestricted,
+        ));
     return Container(
       color: Theme.of(context).colorScheme.primary,
-      child: Center(
-        child: Text('wcdonalds.io',
-            style: TextStyle(
-              color: Theme.of(context).colorScheme.secondary,
-            )),
+      child: InkWell(
+        onTap: () {
+          context.push(Routes.webView.path, extra: web);
+        },
+        child: Center(
+          child: Text('wcdonalds.io',
+              style: TextStyle(
+                color: Theme.of(context).colorScheme.secondary,
+              )),
+        ),
       ),
     );
   }

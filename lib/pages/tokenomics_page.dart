@@ -5,6 +5,7 @@ import 'package:flutter/scheduler.dart' show timeDilation;
 import '../widgets/wc_drawer.dart';
 import 'headers/hero_header.dart';
 import '../navigation/routes.dart';
+import '../widgets/wc_bar.dart';
 
 class TokenomicsPage extends StatelessWidget {
   const TokenomicsPage({Key? key}) : super(key: key);
