@@ -68,7 +68,6 @@ class _WorkersTabState extends State<WorkersTab> {
     return InkWell(
       overlayColor: MaterialStateProperty.all(Colors.transparent),
       onTap: () {
-        // FocusScope.of(context).unfocus();
         final FocusScopeNode currentScope = FocusScope.of(context);
         if (!currentScope.hasPrimaryFocus && currentScope.hasFocus) {
           FocusManager.instance.primaryFocus?.unfocus();
@@ -81,7 +80,7 @@ class _WorkersTabState extends State<WorkersTab> {
           ),
           Center(
             child: Text('Workers Database',
-                style: Theme.of(context).textTheme.headline3),
+                style: Theme.of(context).textTheme.headline4),
           ),
           const SizedBox(
             height: 20,
@@ -202,7 +201,7 @@ class _WorkersTabState extends State<WorkersTab> {
                     Center(
                       child: Text('Wcdonalds Worker #${_workerNft.id}',
                           textAlign: TextAlign.center,
-                          style: Theme.of(context).textTheme.headline3),
+                          style: Theme.of(context).textTheme.headline4),
                     ),
                     const SizedBox(
                       height: 10,

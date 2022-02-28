@@ -6,6 +6,8 @@ import '../widgets/wc_drawer.dart';
 import 'headers/hero_header.dart';
 import '../navigation/routes.dart';
 import '../widgets/wc_bar.dart';
+import 'widgets/expandable_container.dart';
+import 'widgets/tokenomics_title_widget.dart';
 
 class TokenomicsPage extends StatelessWidget {
   const TokenomicsPage({Key? key}) : super(key: key);
@@ -40,42 +42,40 @@ class TokenomicsPage extends StatelessWidget {
                 children: [
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const SizedBox(
+                    children: const [
+                      SizedBox(
                         height: 20,
                       ),
                       Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                          width: 400,
-                          height: 300,
-                          color: Colors.red[300],
-                          padding: const EdgeInsets.all(16),
-                          child: Column(
-                            children: [
-                              Text(
-                                'STAKING GAME',
-                                style: Theme.of(context).textTheme.headline3,
-                              ),
-                            ],
-                          ),
+                        padding: EdgeInsets.all(8.0),
+                        child: ExpandableContainer(
+                          titleWidget:
+                              TokenomicsTitleWidget(title: 'STAKING GAME'),
+                          expandedHeight: 500,
+                          color: Color(0xFF64B5F6),
+                          child: Text(
+                              'jhdsfjghkdfjshgkj fkjkjk kjdfkgjsdkf jdkg jkdjgskdjfgk jkdfj kgjhfjhgkjhkhf ujkjb'),
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                          width: 400,
-                          height: 300,
-                          color: Colors.green[300],
-                          padding: const EdgeInsets.all(16),
-                          child: Column(
-                            children: [
-                              Text(
-                                'WCDOLLAR',
-                                style: Theme.of(context).textTheme.headline3,
-                              ),
-                            ],
-                          ),
+                        padding: EdgeInsets.all(8.0),
+                        child: ExpandableContainer(
+                          titleWidget:
+                              TokenomicsTitleWidget(title: 'TOKENOMICS'),
+                          expandedHeight: 300,
+                          color: Color(0xFFE57373),
+                          child: Text(
+                              'jhdsfjghkdfjshgkj fkjkjk kjdfkgjsdkf jdkg jkdjgskdjfgk jkdfj kgjhfjhgkjhkhf ujkjb'),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.all(8.0),
+                        child: ExpandableContainer(
+                          titleWidget: TokenomicsTitleWidget(title: 'WCDOLLAR'),
+                          expandedHeight: 300,
+                          color: Color(0xFF81C784),
+                          child: Text(
+                              'jhdsfjghkdfjshgkj fkjkjk kjdfkgjsdkf jdkg jkdjgskdjfgk jkdfj kgjhfjhgkjhkhf ujkjb'),
                         ),
                       ),
                     ],

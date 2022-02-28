@@ -19,15 +19,15 @@ class AppTheme {
       color: ThemeColors.textL,
     ),
     headline2: GoogleFonts.pressStart2p(
-      fontSize: 21.0,
+      fontSize: 26.0,
       color: ThemeColors.textL,
     ),
     headline3: GoogleFonts.pressStart2p(
-      fontSize: 16.0,
+      fontSize: 20.0,
       color: ThemeColors.textL,
     ),
-    headline6: GoogleFonts.pressStart2p(
-      fontSize: 20.0,
+    headline4: GoogleFonts.pressStart2p(
+      fontSize: 16.0,
       color: ThemeColors.textL,
     ),
   );
@@ -46,15 +46,15 @@ class AppTheme {
       color: ThemeColors.textD,
     ),
     headline2: GoogleFonts.pressStart2p(
-      fontSize: 21.0,
+      fontSize: 26.0,
       color: ThemeColors.textD,
     ),
     headline3: GoogleFonts.pressStart2p(
-      fontSize: 16.0,
+      fontSize: 20.0,
       color: ThemeColors.textD,
     ),
-    headline6: GoogleFonts.pressStart2p(
-      fontSize: 20.0,
+    headline4: GoogleFonts.pressStart2p(
+      fontSize: 16.0,
       color: ThemeColors.textD,
     ),
   );

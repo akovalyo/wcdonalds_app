@@ -35,7 +35,10 @@ class HeroHeader extends StatelessWidget {
                     ? Align(
                         alignment: Alignment.bottomRight,
                         child: IconButton(
-                          icon: const Icon(Icons.arrow_back),
+                          icon: const Icon(
+                            Icons.arrow_back,
+                            color: Colors.black,
+                          ),
                           onPressed: onTap,
                         ),
                       )
@@ -45,7 +48,11 @@ class HeroHeader extends StatelessWidget {
                   children: [
                     Text(title,
                         style: TextStyle(
-                          color: Theme.of(context).colorScheme.secondary,
+                          fontFamily:
+                              Theme.of(context).textTheme.headline4?.fontFamily,
+                          fontSize:
+                              Theme.of(context).textTheme.headline4?.fontSize,
+                          color: Colors.black,
                         )),
                     const SizedBox(height: 10),
                     Image(
