@@ -24,6 +24,7 @@ dependencies:
   path_provider: ^2.0.9
   permission_handler: ^9.2.0
   image_gallery_saver: ^1.7.1
+  carousel_slider: ^4.0.0
 
 
 
@@ -48,6 +49,10 @@ flutter:
     - assets/images/faq.png
     - assets/images/franchise_1.jpeg
     - assets/images/franchise_2.jpeg
+    - assets/images/worker_wback.png
+    - assets/images/bomb.png
+    - assets/images/whappy_meal.png
+    - assets/images/toys.png
     - assets/data/rarity.json
     
   

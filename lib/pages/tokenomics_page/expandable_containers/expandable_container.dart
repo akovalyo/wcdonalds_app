@@ -1,6 +1,8 @@
 import 'dart:math' as math;
 import 'package:flutter/material.dart';
 
+import '../../../theme/theme.dart';
+
 class ExpandableContainer extends StatefulWidget {
   final Widget titleWidget;
   final double collapsedHeight;
@@ -12,9 +14,9 @@ class ExpandableContainer extends StatefulWidget {
   const ExpandableContainer({
     Key? key,
     required this.titleWidget,
-    this.collapsedHeight = 50,
+    this.collapsedHeight = AppTheme.collapsedWidgetHeight,
     required this.expandedHeight,
-    this.width = 400,
+    this.width = AppTheme.maxWidthWidget,
     required this.color,
     required this.child,
   }) : super(key: key);

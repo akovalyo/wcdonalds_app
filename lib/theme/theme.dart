@@ -10,11 +10,11 @@ class AppTheme {
 
   static TextTheme lightTextTheme = TextTheme(
     bodyText1: GoogleFonts.chakraPetch(
-      fontSize: 20.0,
+      fontSize: 18.0,
       color: ThemeColors.textL,
     ),
     bodyText2: GoogleFonts.chakraPetch(
-      fontSize: 20.0,
+      fontSize: 16.0,
       color: ThemeColors.textL,
     ),
     headline1: GoogleFonts.pressStart2p(
@@ -37,11 +37,11 @@ class AppTheme {
 
   static TextTheme darkTextTheme = TextTheme(
     bodyText1: GoogleFonts.chakraPetch(
-      fontSize: 20.0,
+      fontSize: 18.0,
       color: ThemeColors.textD,
     ),
     bodyText2: GoogleFonts.chakraPetch(
-      fontSize: 20.0,
+      fontSize: 16.0,
       color: ThemeColors.textD,
     ),
     headline1: GoogleFonts.pressStart2p(
