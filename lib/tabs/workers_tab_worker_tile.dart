@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:transparent_image/transparent_image.dart';
 
 import '../models/worker_nft.dart';
+import '../widgets/image_placeholder.dart';
 
 class WorkersTabWorkerTile extends StatelessWidget {
   final WorkerNft nft;
@@ -26,8 +26,16 @@ class WorkersTabWorkerTile extends StatelessWidget {
         Center(
           child: ClipRRect(
             borderRadius: const BorderRadius.all(Radius.circular(15)),
-            child: FadeInImage.memoryNetwork(
-                placeholder: kTransparentImage, image: nft.imageUrl),
+            child: ImagePlaceholder(
+              height: 200,
+              width: 200,
+              imagePath: nft.imageUrl,
+              placeholder: Container(
+                height: 200,
+                width: 200,
+                color: Theme.of(context).colorScheme.background,
+              ),
+            ),
           ),
         ),
         const SizedBox(

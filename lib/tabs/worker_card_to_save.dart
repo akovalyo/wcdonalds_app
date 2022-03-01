@@ -78,10 +78,11 @@ class _WorkerCardToSaveState extends State<WorkerCardToSave> {
           children: [
             _isLoading
                 ? Center(
+                    // ignore: sized_box_for_whitespace
                     child: Container(
                         width: 40,
                         height: 40,
-                        child: AppCircularProgressIndicator()),
+                        child: const AppCircularProgressIndicator()),
                   )
                 : Container(),
             ListView(
@@ -89,9 +90,12 @@ class _WorkerCardToSaveState extends State<WorkerCardToSave> {
                 RepaintBoundary(
                   key: _key,
                   child: Container(
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).colorScheme.primary,
+                      borderRadius: const BorderRadius.all(Radius.circular(10)),
+                    ),
                     height: 405,
                     padding: const EdgeInsets.all(10),
-                    color: Theme.of(context).colorScheme.primary,
                     child: Column(
                       children: [
                         Column(

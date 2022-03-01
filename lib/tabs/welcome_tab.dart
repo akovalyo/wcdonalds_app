@@ -197,7 +197,7 @@ class _WelcomeTabState extends State<WelcomeTab> {
   }
 
   Widget buildWebsiteTile(BuildContext context) {
-    final WebViewExtraWrapper web = WebViewExtraWrapper(
+    final WebViewExtraWrapper extra = WebViewExtraWrapper(
         title: 'wcdonalds.io',
         webView: const WebView(
           initialUrl: 'https://wcdonalds.io',
@@ -207,12 +207,12 @@ class _WelcomeTabState extends State<WelcomeTab> {
       color: Theme.of(context).colorScheme.primary,
       child: InkWell(
         onTap: () {
-          context.push(Routes.webView.path, extra: web);
+          context.push(Routes.webView.path, extra: extra);
         },
-        child: Center(
+        child: const Center(
           child: Text('wcdonalds.io',
               style: TextStyle(
-                color: Theme.of(context).colorScheme.secondary,
+                color: Colors.black,
               )),
         ),
       ),
