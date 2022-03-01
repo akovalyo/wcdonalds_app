@@ -34,7 +34,7 @@ class _HomePageState extends State<HomePage> {
         child: const WcBar(),
         preferredSize: Size(
           MediaQuery.of(context).size.width,
-          wcBarHeight,
+          AppTheme.wcBarHeight,
         ),
       ),
       drawer: const WcDrawer(),

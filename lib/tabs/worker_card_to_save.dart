@@ -1,0 +1,143 @@
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import 'workers_tab_worker_tile.dart';
+import '../theme/theme.dart';
+import '../io/io.dart';
+import '../widgets/app_circular_progress_indicator.dart';
+import '../models/platform.dart';
+import '../models/app_state.dart';
+
+class WorkerCardToSave extends StatefulWidget {
+  final WorkersTabWorkerTile workerTile;
+  final String id;
+
+  const WorkerCardToSave({
+    Key? key,
+    required this.workerTile,
+    required this.id,
+  }) : super(key: key);
+
+  @override
+  State<WorkerCardToSave> createState() => _WorkerCardToSaveState();
+}
+
+class _WorkerCardToSaveState extends State<WorkerCardToSave> {
+  final GlobalKey _key = GlobalKey();
+  bool _isLoading = false;
+
+  void saveCard(String platform) async {
+    setState(() {
+      _isLoading = true;
+    });
+
+    String successMessage = 'File saved';
+
+    if (platform == PlatformInfo.android) {
+      successMessage += ' to "Wcdonalds" folder';
+    } else if (platform == PlatformInfo.macOs) {
+      successMessage += ' to the Photos Library';
+    }
+
+    bool picSaved = await saveNftCard(
+      _key,
+      'WcdonaldsWorker#${widget.id}',
+      platform,
+    );
+
+    if (picSaved) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(successMessage),
+          backgroundColor: Colors.green.withOpacity(0.7),
+        ),
+      );
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: const Text('Faild to save the picture'),
+          backgroundColor: Theme.of(context).errorColor.withOpacity(0.7),
+        ),
+      );
+    }
+    Navigator.of(context).pop();
+    setState(() {
+      _isLoading = false;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final AppState appState = context.read<AppState>();
+
+    return AlertDialog(
+      content: SizedBox(
+        height: AppTheme.getMaxWidgetHeight(context, 450),
+        width: AppTheme.getMaxWidgetWidth(context),
+        child: Stack(
+          children: [
+            _isLoading
+                ? Center(
+                    child: Container(
+                        width: 40,
+                        height: 40,
+                        child: AppCircularProgressIndicator()),
+                  )
+                : Container(),
+            ListView(
+              children: [
+                RepaintBoundary(
+                  key: _key,
+                  child: Container(
+                    height: 405,
+                    padding: const EdgeInsets.all(10),
+                    color: Theme.of(context).colorScheme.primary,
+                    child: Column(
+                      children: [
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: const [
+                            Image(
+                              image: AssetImage('assets/images/logo_y.png'),
+                              height: 30,
+                            ),
+                            Image(
+                              image: AssetImage('assets/images/wcdonalds.png'),
+                              height: 20,
+                            ),
+                            SizedBox(
+                              height: 20,
+                            ),
+                          ],
+                        ),
+                        widget.workerTile,
+                      ],
+                    ),
+                  ),
+                ),
+                Wrap(
+                  direction: Axis.horizontal,
+                  alignment: WrapAlignment.center,
+                  children: [
+                    TextButton(
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                      child: const Text('Close'),
+                    ),
+                    TextButton(
+                      onPressed: () {
+                        saveCard(appState.platform);
+                      },
+                      child: const Text('Save'),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}

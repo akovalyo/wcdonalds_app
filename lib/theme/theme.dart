@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'theme_helper.dart';
 
-const double wcBarHeight = 55.0;
-
 class AppTheme {
+  static const double wcBarHeight = 55.0;
+  static const double paddingHorizontal = 8.0;
+  static const double maxWidthWidget = 400.0;
+  static const double collapsedWidgetHeight = 50.0;
+
   static TextTheme lightTextTheme = TextTheme(
     bodyText1: GoogleFonts.chakraPetch(
       fontSize: 20.0,
@@ -158,5 +161,28 @@ class AppTheme {
       ),
       textTheme: darkTextTheme,
     );
+  }
+
+  //TODO: Test edge cases
+  static double getMaxWidgetWidth(BuildContext context) {
+    final double width = MediaQuery.of(context).size.width;
+    if (width >= 400 + paddingHorizontal * 2) {
+      return 400;
+    } else {
+      return 400 - paddingHorizontal * 2;
+    }
+  }
+
+//TODO: Test edge cases
+  static double getMaxWidgetHeight(BuildContext context, double defaultHeight) {
+    final double safeHeight = MediaQuery.of(context).size.height -
+        wcBarHeight -
+        MediaQuery.of(context).padding.top -
+        MediaQuery.of(context).padding.bottom;
+    if (defaultHeight > safeHeight) {
+      return safeHeight * 0.9;
+    } else {
+      return defaultHeight;
+    }
   }
 }

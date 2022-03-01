@@ -3,6 +3,8 @@ import 'package:flutter/services.dart';
 import 'dart:convert' as convert;
 import '../models/worker_nft.dart';
 import 'package:transparent_image/transparent_image.dart';
+import 'workers_tab_worker_tile.dart';
+import 'worker_card_to_save.dart';
 
 class WorkersTab extends StatefulWidget {
   const WorkersTab({Key? key}) : super(key: key);
@@ -17,6 +19,7 @@ class _WorkersTabState extends State<WorkersTab> {
   bool _isLoading = false;
   bool _nftLoaded = false;
   late WorkerNft _workerNft;
+  late WorkersTabWorkerTile _workerTile;
   Map<String, dynamic> _rarityDb = {};
   int _searchByIndex = 0;
 
@@ -49,6 +52,7 @@ class _WorkersTabState extends State<WorkersTab> {
       setState(() {
         _workerNft = WorkerNft.fromJson(metadata, id);
         _nftLoaded = true;
+        _workerTile = WorkersTabWorkerTile(nft: _workerNft);
       });
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -176,7 +180,10 @@ class _WorkersTabState extends State<WorkersTab> {
 
                   request(id);
                   _workerIdController.clear();
-                  FocusScope.of(context).unfocus();
+                  final FocusScopeNode currentScope = FocusScope.of(context);
+                  if (!currentScope.hasPrimaryFocus && currentScope.hasFocus) {
+                    FocusManager.instance.primaryFocus?.unfocus();
+                  }
                 }
               },
               child: const Text('Submit'),
@@ -198,27 +205,28 @@ class _WorkersTabState extends State<WorkersTab> {
           _nftLoaded
               ? Column(
                   children: [
-                    Center(
-                      child: Text('Wcdonalds Worker #${_workerNft.id}',
-                          textAlign: TextAlign.center,
-                          style: Theme.of(context).textTheme.headline4),
-                    ),
+                    _workerTile,
                     const SizedBox(
-                      height: 10,
+                      height: 5,
                     ),
                     Center(
-                      child: ClipRRect(
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(15)),
-                        child: FadeInImage.memoryNetwork(
-                            placeholder: kTransparentImage,
-                            image: _workerNft.imageUrl),
+                      child: IconButton(
+                        iconSize: 30,
+                        icon: const Icon(
+                          Icons.save,
+                        ),
+                        onPressed: () {
+                          showDialog(
+                              context: context,
+                              builder: (context) {
+                                return WorkerCardToSave(
+                                  workerTile: _workerTile,
+                                  id: _workerNft.id,
+                                );
+                              });
+                        },
                       ),
                     ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    Center(child: Text('Rank: ${_workerNft.rarity}')),
                   ],
                 )
               : Container(),

@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 
-class Platform {
+class PlatformInfo {
   static String android = 'android';
   static String fuchsia = 'fuchsia';
   static String ios = 'ios';

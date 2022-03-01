@@ -7,7 +7,7 @@ import 'platform.dart';
 class AppState extends AppStateInterface with ChangeNotifier {
   bool _isInitialized = false;
   bool _isDarkTheme = false;
-  String _platform = Platform.android;
+  String _platform = PlatformInfo.android;
   final AppCache _appCache = AppCache();
   Uri? _destUri;
 
@@ -26,7 +26,7 @@ class AppState extends AppStateInterface with ChangeNotifier {
   @override
   void initializeApp() async {
     _isDarkTheme = await _appCache.isDarkTheme();
-    _platform = await Platform.check();
+    _platform = await PlatformInfo.check();
     _isInitialized = true;
     print(_platform);
     notifyListeners();

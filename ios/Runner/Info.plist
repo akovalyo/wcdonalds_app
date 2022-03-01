@@ -43,5 +43,7 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>NSPPhotoLibraryUsageDescription</key>
+	<string>This app needs to use Photos</string>
 </dict>
 </plist>
