@@ -41,7 +41,7 @@ class _WorkersTabState extends State<WorkersTab> {
           await rootBundle.loadString('assets/data/rarity.json');
       _rarityDb = await convert.jsonDecode(response);
     } catch (e) {
-      print('ERROR LOADING RARITIES: $e');
+      // print('ERROR LOADING RARITIES: $e');
     }
   }
 

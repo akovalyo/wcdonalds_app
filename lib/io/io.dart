@@ -82,7 +82,7 @@ Future<bool> saveNftCard(
       return true;
     }
   } catch (e) {
-    print('saveNftCard() error: $e');
+    // print('saveNftCard() error: $e');
   }
 
   return false;

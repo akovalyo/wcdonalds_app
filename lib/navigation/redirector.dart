@@ -42,7 +42,7 @@ class UninitializedRedirect extends Redirect {
       return null;
     }
     appState.pushDestUri(Uri(path: state.subloc));
-    print('UninitializedRedirect. Dest: ${appState.destUri}');
+    // print('UninitializedRedirect. Dest: ${appState.destUri}');
     return Uri(path: Routes.splash.path);
   }
 }
@@ -56,7 +56,7 @@ class InitializedRedirect extends Redirect {
   Uri? getUri(GoRouterState state, AppState appState) {
     Uri? destUri = appState.popDestUri();
     if (destUri != null) {
-      print('InitializedRedirect-to destination: $destUri');
+      // print('InitializedRedirect-to destination: $destUri');
       return destUri;
     }
 
@@ -65,7 +65,7 @@ class InitializedRedirect extends Redirect {
 
     next = Routes.home.path;
 
-    print('InitializedRedirect');
+    // print('InitializedRedirect');
     return Uri(path: next);
   }
 }

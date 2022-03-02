@@ -38,7 +38,7 @@ class _WcdonaldsAppState extends State<WcdonaldsApp> {
           Routes.webView,
         ],
         refreshListenable: _appState,
-        debugLogDiagnostics: true,
+        debugLogDiagnostics: false,
         urlPathStrategy: UrlPathStrategy.path,
         redirect: (GoRouterState state) {
           return Redirector.instance.redirect(state, _appState);

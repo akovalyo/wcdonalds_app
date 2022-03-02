@@ -28,7 +28,6 @@ class AppState extends AppStateInterface with ChangeNotifier {
     _isDarkTheme = await _appCache.isDarkTheme();
     _platform = await PlatformInfo.check();
     _isInitialized = true;
-    print(_platform);
     notifyListeners();
   }
 
