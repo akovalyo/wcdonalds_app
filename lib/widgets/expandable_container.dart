@@ -1,7 +1,7 @@
 import 'dart:math' as math;
 import 'package:flutter/material.dart';
 
-import '../../theme/theme.dart';
+import '../theme/theme.dart';
 
 class ExpandableContainer extends StatefulWidget {
   final Widget titleWidget;
@@ -37,7 +37,7 @@ class _ExpandableContainerState extends State<ExpandableContainer>
   void initState() {
     _controller = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 700),
+      duration: const Duration(milliseconds: 450),
     );
 
     //Animation params of the container, changes the size of the container
@@ -45,7 +45,7 @@ class _ExpandableContainerState extends State<ExpandableContainer>
         Tween<double>(begin: widget.collapsedHeight, end: widget.expandedHeight)
             .animate(CurvedAnimation(
       parent: _controller,
-      curve: const Interval(0.0, 0.3, curve: Curves.fastOutSlowIn),
+      curve: const Interval(0.0, 0.45, curve: Curves.fastOutSlowIn),
     ));
 
     //Animation params of the child widget, changes opacity of the child widget
@@ -109,7 +109,7 @@ class _ExpandableContainerState extends State<ExpandableContainer>
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        widget.titleWidget,
+                        Expanded(child: widget.titleWidget),
                         Transform.rotate(
                           angle: (_arrowAnimation.value * math.pi / 180),
                           child: const Padding(

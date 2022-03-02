@@ -30,11 +30,14 @@ class TokenomicsContainerDefault extends StatelessWidget {
                   ),
                 )
               : Container(),
+          title != null ? const SizedBox(height: 6) : Container(),
           ImagePlaceholder(
-            // height: 100,
-            width: 100,
+            height: 80,
+            // width: 100,
             imagePath: imagePath,
             placeholder: Container(
+              height: 80,
+              width: 80,
               color: Colors.transparent,
             ),
           ),
