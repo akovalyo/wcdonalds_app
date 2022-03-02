@@ -14,7 +14,7 @@ class WorkersTab extends StatefulWidget {
 }
 
 class _WorkersTabState extends State<WorkersTab> {
-  final _workerIdController = TextEditingController();
+  final _inputController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
   bool _isLoading = false;
   bool _nftLoaded = false;
@@ -31,14 +31,18 @@ class _WorkersTabState extends State<WorkersTab> {
 
   @override
   void dispose() {
-    _workerIdController.dispose();
+    _inputController.dispose();
     super.dispose();
   }
 
   void loadRarities() async {
-    final String response =
-        await rootBundle.loadString('assets/data/rarity.json');
-    _rarityDb = await convert.jsonDecode(response);
+    try {
+      final String response =
+          await rootBundle.loadString('assets/data/rarity.json');
+      _rarityDb = await convert.jsonDecode(response);
+    } catch (e) {
+      print('ERROR LOADING RARITIES: $e');
+    }
   }
 
   void request(String id) async {
@@ -148,7 +152,7 @@ class _WorkersTabState extends State<WorkersTab> {
                   autofocus: false,
                   autocorrect: false,
                   keyboardType: TextInputType.number,
-                  controller: _workerIdController,
+                  controller: _inputController,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Value required';
@@ -173,13 +177,23 @@ class _WorkersTabState extends State<WorkersTab> {
             child: TextButton(
               onPressed: () {
                 if (_formKey.currentState!.validate()) {
-                  String id = _workerIdController.text;
+                  String id = _inputController.text;
                   if (_searchByIndex == 1) {
-                    id = _rarityDb[_workerIdController.text].toString();
+                    if (_rarityDb.isEmpty) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: const Text('Sorry, search failed'),
+                          backgroundColor:
+                              Theme.of(context).errorColor.withOpacity(0.7),
+                        ),
+                      );
+                      return;
+                    }
+                    id = _rarityDb[_inputController.text].toString();
                   }
 
                   request(id);
-                  _workerIdController.clear();
+                  _inputController.clear();
                   final FocusScopeNode currentScope = FocusScope.of(context);
                   if (!currentScope.hasPrimaryFocus && currentScope.hasFocus) {
                     FocusManager.instance.primaryFocus?.unfocus();

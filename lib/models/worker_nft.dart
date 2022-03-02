@@ -45,4 +45,26 @@ class WorkerNft {
       rarity: attrRarity.toString(),
     );
   }
+
+  String getWorkersSalary() {
+    int rarityInt = int.parse(rarity);
+
+    if (rarityInt <= 10) {
+      return '155';
+    } else if (rarityInt <= 99) {
+      return '148';
+    } else if (rarityInt <= 499) {
+      return '134';
+    } else if (rarityInt <= 998) {
+      return '124';
+    } else if (rarityInt <= 1498) {
+      return '115';
+    } else if (rarityInt <= 1998) {
+      return '100';
+    } else if (rarityInt <= 2222) {
+      return '95';
+    }
+
+    return '0';
+  }
 }

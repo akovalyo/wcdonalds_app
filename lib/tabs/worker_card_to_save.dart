@@ -72,7 +72,7 @@ class _WorkerCardToSaveState extends State<WorkerCardToSave> {
 
     return AlertDialog(
       content: SizedBox(
-        height: AppTheme.getMaxWidgetHeight(context, 450),
+        height: AppTheme.getMaxWidgetHeight(context, 470),
         width: AppTheme.getMaxWidgetWidth(context),
         child: Stack(
           children: [
@@ -94,7 +94,7 @@ class _WorkerCardToSaveState extends State<WorkerCardToSave> {
                       color: Theme.of(context).colorScheme.primary,
                       borderRadius: const BorderRadius.all(Radius.circular(10)),
                     ),
-                    height: 405,
+                    height: 425,
                     padding: const EdgeInsets.all(10),
                     child: Column(
                       children: [

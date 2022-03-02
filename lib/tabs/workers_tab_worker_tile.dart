@@ -41,7 +41,17 @@ class WorkersTabWorkerTile extends StatelessWidget {
         const SizedBox(
           height: 10,
         ),
-        Center(child: Text('Rank: ${nft.rarity}')),
+        Center(
+          child: Text(
+            'Rank: ${nft.rarity}',
+          ),
+        ),
+        Center(
+          child: Text(
+            'Wage: ${nft.getWorkersSalary()} \$WcDollars per day',
+            textAlign: TextAlign.center,
+          ),
+        ),
       ],
     );
   }
