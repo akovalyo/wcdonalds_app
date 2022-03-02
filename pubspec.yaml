@@ -57,6 +57,9 @@ flutter:
     - assets/images/dice.png
     - assets/images/chart.png
     - assets/images/circle.png
+    - assets/images/twitter_logo.png
+    - assets/images/instagram_logo.png
+    - assets/images/discord_logo.png
     - assets/images/global.gif
     - assets/data/rarity.json
     

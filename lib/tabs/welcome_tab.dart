@@ -10,6 +10,7 @@ import '../models/worker_nft.dart';
 import '../navigation/routes.dart';
 import '../pages/headers/hero_header.dart';
 import '../models/web_view_extra_wrapper.dart';
+import '../models/url_launcher.dart';
 
 class WelcomeTab extends StatefulWidget {
   const WelcomeTab({Key? key}) : super(key: key);
@@ -91,14 +92,29 @@ class _WelcomeTabState extends State<WelcomeTab> {
                 child: buildWebsiteTile(context),
               ),
               StaggeredGridTile.count(
-                crossAxisCellCount: 2,
+                crossAxisCellCount: 1,
+                mainAxisCellCount: 1,
+                child: buildSocialLogoTile(() {
+                  UrlLauncher.openInBrowser('https://discord.gg/cWHBN4XJNj');
+                }, const Color(0xff3f53b4), 'assets/images/discord_logo.png'),
+              ),
+              StaggeredGridTile.count(
+                crossAxisCellCount: 1,
                 mainAxisCellCount: 1,
                 child: Container(
                   color: Colors.green[400],
                 ),
               ),
               StaggeredGridTile.count(
-                crossAxisCellCount: 2,
+                crossAxisCellCount: 1,
+                mainAxisCellCount: 1,
+                child: buildSocialLogoTile(() {
+                  UrlLauncher.openInBrowser(
+                      'https://www.instagram.com/wcdonaldsnft/');
+                }, const Color(0xFFBB31D3), 'assets/images/instagram_logo.png'),
+              ),
+              StaggeredGridTile.count(
+                crossAxisCellCount: 1,
                 mainAxisCellCount: 1,
                 child: Container(
                   color: Colors.yellow[400],
@@ -107,9 +123,9 @@ class _WelcomeTabState extends State<WelcomeTab> {
               StaggeredGridTile.count(
                 crossAxisCellCount: 1,
                 mainAxisCellCount: 1,
-                child: Container(
-                  color: Colors.blue[400],
-                ),
+                child: buildSocialLogoTile(() {
+                  UrlLauncher.openInBrowser('https://twitter.com/WcdonaldsNFT');
+                }, const Color(0xff56bbd0), 'assets/images/twitter_logo.png'),
               ),
             ],
           ),
@@ -158,7 +174,7 @@ class _WelcomeTabState extends State<WelcomeTab> {
     );
   }
 
-  Widget buildWorkerTile(VoidCallback onTap, Color color, image) {
+  Widget buildWorkerTile(VoidCallback onTap, Color color, String image) {
     return InkWell(
       onTap: onTap,
       child: Container(
@@ -214,6 +230,20 @@ class _WelcomeTabState extends State<WelcomeTab> {
               style: TextStyle(
                 color: Colors.black,
               )),
+        ),
+      ),
+    );
+  }
+
+  Widget buildSocialLogoTile(VoidCallback onTap, Color color, String image) {
+    return InkWell(
+      onTap: onTap,
+      child: Container(
+        padding: const EdgeInsets.all(4),
+        color: color,
+        child: Image(
+          image: AssetImage(image),
+          fit: BoxFit.fill,
         ),
       ),
     );
