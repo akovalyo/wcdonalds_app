@@ -1,7 +1,7 @@
 import 'dart:math' as math;
 import 'package:flutter/material.dart';
 
-import '../../../theme/theme.dart';
+import '../../theme/theme.dart';
 
 class ExpandableContainer extends StatefulWidget {
   final Widget titleWidget;
@@ -102,34 +102,36 @@ class _ExpandableContainerState extends State<ExpandableContainer>
             width: widget.width,
             height: _sizeAnimation.value,
             color: widget.color,
-            child: Column(
-              children: [
-                Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      widget.titleWidget,
-                      Transform.rotate(
-                        angle: (_arrowAnimation.value * math.pi / 180),
-                        child: const Padding(
-                          padding: EdgeInsets.only(bottom: 2.0),
-                          child: Icon(
-                            Icons.keyboard_arrow_down,
-                            color: Colors.black,
-                            size: 25,
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        widget.titleWidget,
+                        Transform.rotate(
+                          angle: (_arrowAnimation.value * math.pi / 180),
+                          child: const Padding(
+                            padding: EdgeInsets.only(bottom: 2.0),
+                            child: Icon(
+                              Icons.keyboard_arrow_down,
+                              color: Colors.black,
+                              size: 25,
+                            ),
                           ),
-                        ),
-                      )
-                    ]),
-                _sizeAnimation.value == widget.expandedHeight
-                    ? Padding(
-                        padding: const EdgeInsets.only(top: 10.0),
-                        child: Opacity(
-                            opacity: _opacityAnimation.value,
-                            child: widget.child),
-                      )
-                    : Container(),
-              ],
+                        )
+                      ]),
+                  _sizeAnimation.value == widget.expandedHeight
+                      ? Padding(
+                          padding: const EdgeInsets.only(top: 10.0),
+                          child: Opacity(
+                              opacity: _opacityAnimation.value,
+                              child: widget.child),
+                        )
+                      : Container(),
+                ],
+              ),
             ),
           );
         },

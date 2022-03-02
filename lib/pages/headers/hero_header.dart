@@ -56,6 +56,7 @@ class HeroHeader extends StatelessWidget {
                         )),
                     const SizedBox(height: 10),
                     Image(
+                      width: 70,
                       image: AssetImage(image),
                     ),
                   ],

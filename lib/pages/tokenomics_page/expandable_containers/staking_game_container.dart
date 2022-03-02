@@ -3,6 +3,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 
 import '../../../theme/theme.dart';
 import '../../../widgets/image_placeholder.dart';
+import '../../../widgets/text_paragraph.dart';
 
 class StakingGameContainer extends StatefulWidget {
   const StakingGameContainer({Key? key}) : super(key: key);
@@ -26,40 +27,14 @@ class _StakingGameContainerState extends State<StakingGameContainer> {
         height: 220,
         body: Column(
           children: const [
-            Text(
-              'Sell a total of 555 franchises',
-              softWrap: true,
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: Colors.black,
-              ),
-            ),
+            TextParagraph('Sell a total of 555 franchises'),
             SizedBox(height: 5),
-            Text(
-              '1.3 SOL - White List*',
-              softWrap: true,
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: Colors.black,
-              ),
-            ),
-            Text(
-              '2 SOL Public*',
-              softWrap: true,
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: Colors.black,
-              ),
-            ),
+            TextParagraph('1 SOL* - White List'),
+            TextParagraph('1.5* SOL Public'),
             SizedBox(height: 5),
-            Text(
+            TextParagraph(
               '*Price can be changed',
-              softWrap: true,
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 14,
-              ),
+              fontSize: 12,
             ),
           ],
         ),
@@ -72,23 +47,10 @@ class _StakingGameContainerState extends State<StakingGameContainer> {
         height: 220,
         body: Column(
           children: const [
-            Text(
-              'Workers generate \$WcDollars every 24h',
-              softWrap: true,
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: Colors.black,
-              ),
-            ),
+            TextParagraph('Workers generate \$WcDollars every 24h'),
             SizedBox(height: 10),
-            Text(
-              'Depending on rarity rank workers generate more or less Wc\$',
-              softWrap: true,
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: Colors.black,
-              ),
-            ),
+            TextParagraph(
+                'Depending on rarity rank workers generate more or less Wc\$'),
           ],
         ),
       ),
@@ -100,23 +62,11 @@ class _StakingGameContainerState extends State<StakingGameContainer> {
         height: 220,
         body: Column(
           children: const [
-            Text(
-              'Everytime a Worker claim Wc\$ 20% of that claims goes to pool.',
-              softWrap: true,
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: Colors.black,
-              ),
-            ),
+            TextParagraph(
+                'Everytime a Worker claim Wc\$ 20% of that claims goes to pool.'),
             SizedBox(height: 10),
-            Text(
-              'At the end of the day all the Wc\$ from the pool goes for each staked Franchise.',
-              softWrap: true,
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: Colors.black,
-              ),
-            ),
+            TextParagraph(
+                'At the end of the day all the Wc\$ from the pool goes for each staked Franchise.'),
           ],
         ),
       ),
@@ -128,23 +78,11 @@ class _StakingGameContainerState extends State<StakingGameContainer> {
         height: 220,
         body: Column(
           children: const [
-            Text(
-              'If you unstake a worker it has 15% chance to be reassigned to another Franchise.',
-              softWrap: true,
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: Colors.black,
-              ),
-            ),
+            TextParagraph(
+                'If you unstake a worker it has 15% chance to be reassigned to another Franchise.'),
             SizedBox(height: 10),
-            Text(
-              'That risk is lowered if you own a Executive, Chief or Global Wanager.',
-              softWrap: true,
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: Colors.black,
-              ),
-            ),
+            TextParagraph(
+                'That risk is lowered if you own a Executive, Chief or Global Wanager.'),
           ],
         ),
       ),
@@ -157,23 +95,10 @@ class _StakingGameContainerState extends State<StakingGameContainer> {
         height: 220,
         body: Column(
           children: const [
-            Text(
-              'With Wc\$ you can buy Whappy Meals.',
-              softWrap: true,
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: Colors.black,
-              ),
-            ),
+            TextParagraph('With Wc\$ you can buy Whappy Meals.'),
             SizedBox(height: 10),
-            Text(
-              'Each Whappy Meal gives you a brand new NFT from Wcdonalds collection (TOYS) or other collections.',
-              softWrap: true,
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: Colors.black,
-              ),
-            ),
+            TextParagraph(
+                'Each Whappy Meal gives you a brand new NFT from Wcdonalds collection (TOYS) or other collections.'),
           ],
         ),
       ),
@@ -186,23 +111,11 @@ class _StakingGameContainerState extends State<StakingGameContainer> {
         height: 220,
         body: Column(
           children: const [
-            Text(
-              'Toys will be listed in the second marker. All royalties from selling them goes for the liquidity.',
-              softWrap: true,
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: Colors.black,
-              ),
-            ),
+            TextParagraph(
+                'Toys will be listed in the second marker. All royalties from selling them goes for the liquidity.'),
             SizedBox(height: 10),
-            Text(
-              'If you collect one of each toy from a collection you can participate for the Big Wac Raffle.',
-              softWrap: true,
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: Colors.black,
-              ),
-            ),
+            TextParagraph(
+                'If you collect one of each toy from a collection you can participate for the Big Wac Raffle.'),
           ],
         ),
       ),
@@ -274,29 +187,32 @@ class _StakingGameContainerState extends State<StakingGameContainer> {
       height: height,
       color: color,
       width: AppTheme.getMaxWidgetWidth(context),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            title,
-            style: const TextStyle(
-              color: Colors.black,
-              fontWeight: FontWeight.bold,
+      child: SingleChildScrollView(
+        padding: const EdgeInsets.all(6),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              title,
+              style: const TextStyle(
+                color: Colors.black,
+                fontWeight: FontWeight.bold,
+              ),
             ),
-          ),
-          const SizedBox(
-            height: 5,
-          ),
-          ImagePlaceholder(
-            height: 50,
-            width: 50,
-            imagePath: image,
-            placeholder: Container(
-              color: Colors.blue[600],
+            const SizedBox(
+              height: 5,
             ),
-          ),
-          body,
-        ],
+            ImagePlaceholder(
+              height: 50,
+              width: 50,
+              imagePath: image,
+              placeholder: Container(
+                color: Colors.blue[600],
+              ),
+            ),
+            body,
+          ],
+        ),
       ),
     );
   }

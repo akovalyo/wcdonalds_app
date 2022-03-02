@@ -138,7 +138,7 @@ class _WelcomeTabState extends State<WelcomeTab> {
       child: HeroHeader(
         tag: 'tokenomics',
         title: 'TOKENOMICS',
-        image: 'assets/images/wcdollar.png',
+        image: 'assets/images/chart.png',
         color: const Color(0xFFFF8A65),
         onTap: () {
           context.push(Routes.tokenomics.path);

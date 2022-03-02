@@ -185,4 +185,15 @@ class AppTheme {
       return defaultHeight;
     }
   }
+
+  static TextStyle richTextBody1Black(
+    BuildContext context, {
+    bool bold = false,
+  }) =>
+      TextStyle(
+        fontFamily: Theme.of(context).textTheme.bodyText1?.fontFamily,
+        color: Colors.black,
+        fontSize: Theme.of(context).textTheme.bodyText1?.fontSize,
+        fontWeight: bold ? FontWeight.bold : FontWeight.normal,
+      );
 }

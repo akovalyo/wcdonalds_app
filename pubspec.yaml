@@ -53,6 +53,10 @@ flutter:
     - assets/images/bomb.png
     - assets/images/whappy_meal.png
     - assets/images/toys.png
+    - assets/images/dice.png
+    - assets/images/chart.png
+    - assets/images/circle.png
+    - assets/images/global.gif
     - assets/data/rarity.json
     
   

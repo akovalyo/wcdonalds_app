@@ -38,7 +38,7 @@ class Tabs {
 
   static final List<Tab> all = [
     Tabs.home,
-    Tabs.news,
+    // Tabs.news,
     Tabs.workers,
   ];
 
