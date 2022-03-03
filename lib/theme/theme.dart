@@ -20,18 +20,22 @@ class AppTheme {
     headline1: GoogleFonts.pressStart2p(
       fontSize: 32.0,
       color: ThemeColors.textL,
+      height: 1.5,
     ),
     headline2: GoogleFonts.pressStart2p(
       fontSize: 26.0,
       color: ThemeColors.textL,
+      height: 1.5,
     ),
     headline3: GoogleFonts.pressStart2p(
       fontSize: 20.0,
       color: ThemeColors.textL,
+      height: 1.5,
     ),
     headline4: GoogleFonts.pressStart2p(
       fontSize: 16.0,
       color: ThemeColors.textL,
+      height: 1.5,
     ),
   );
 
@@ -47,18 +51,22 @@ class AppTheme {
     headline1: GoogleFonts.pressStart2p(
       fontSize: 32.0,
       color: ThemeColors.textD,
+      height: 1.5,
     ),
     headline2: GoogleFonts.pressStart2p(
       fontSize: 26.0,
       color: ThemeColors.textD,
+      height: 1.5,
     ),
     headline3: GoogleFonts.pressStart2p(
       fontSize: 20.0,
       color: ThemeColors.textD,
+      height: 1.5,
     ),
     headline4: GoogleFonts.pressStart2p(
       fontSize: 16.0,
       color: ThemeColors.textD,
+      height: 1.5,
     ),
   );
 
@@ -189,10 +197,13 @@ class AppTheme {
   static TextStyle richTextBody1Black(
     BuildContext context, {
     bool bold = false,
+    bool themeColor = false,
   }) =>
       TextStyle(
         fontFamily: Theme.of(context).textTheme.bodyText1?.fontFamily,
-        color: Colors.black,
+        color: themeColor
+            ? Theme.of(context).textTheme.bodyText1?.color
+            : Colors.black,
         fontSize: Theme.of(context).textTheme.bodyText1?.fontSize,
         fontWeight: bold ? FontWeight.bold : FontWeight.normal,
       );

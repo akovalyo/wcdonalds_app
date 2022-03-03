@@ -3,7 +3,7 @@ description: The best fast food enterprise and burgas flippers of all the metave
 
 publish_to: 'none' 
 
-version: 0.0.1+1
+version: 0.1.0+1
 
 environment:
   sdk: ">=2.17.0-69.2.beta <3.0.0"

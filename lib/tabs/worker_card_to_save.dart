@@ -91,7 +91,8 @@ class _WorkerCardToSaveState extends State<WorkerCardToSave> {
                   key: _key,
                   child: Container(
                     decoration: BoxDecoration(
-                      color: Theme.of(context).colorScheme.primary,
+                      // color: Theme.of(context).colorScheme.primary,
+                      color: Color.fromARGB(255, 219, 92, 64),
                       borderRadius: const BorderRadius.all(Radius.circular(10)),
                     ),
                     height: 425,

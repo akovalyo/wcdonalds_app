@@ -79,7 +79,7 @@ class FaqPage extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: const [
                             TextParagraph(
-                              'Wcdonalds is the best fast food enterprise one the Solana Blockchain. We hire and train Wcworkers each has its own rarity and attributes.',
+                              'Wcdonalds is the best fast food enterprise on the Solana Blockchain. We hire and train Wcworkers each has its own rarity and attributes.',
                               textAlign: TextAlign.left,
                             ),
                           ],
@@ -327,12 +327,16 @@ class FaqPage extends StatelessWidget {
                                 children: [
                                   TextSpan(
                                     text: '• Wanager: ',
-                                    style: AppTheme.richTextBody1Black(context,
-                                        bold: true),
+                                    style: AppTheme.richTextBody1Black(
+                                      context,
+                                      bold: true,
+                                    ),
                                   ),
                                   TextSpan(
                                     text: 'Holding 1+ Wcdonalds Worker',
-                                    style: AppTheme.richTextBody1Black(context),
+                                    style: AppTheme.richTextBody1Black(
+                                      context,
+                                    ),
                                   ),
                                 ],
                               ),
@@ -342,12 +346,16 @@ class FaqPage extends StatelessWidget {
                                 children: [
                                   TextSpan(
                                     text: '• Executive Wanager: ',
-                                    style: AppTheme.richTextBody1Black(context,
-                                        bold: true),
+                                    style: AppTheme.richTextBody1Black(
+                                      context,
+                                      bold: true,
+                                    ),
                                   ),
                                   TextSpan(
                                     text: 'Holding 10- 19 WcWorkers',
-                                    style: AppTheme.richTextBody1Black(context),
+                                    style: AppTheme.richTextBody1Black(
+                                      context,
+                                    ),
                                   ),
                                 ],
                               ),
@@ -357,12 +365,16 @@ class FaqPage extends StatelessWidget {
                                 children: [
                                   TextSpan(
                                     text: '• Chief Wanager: ',
-                                    style: AppTheme.richTextBody1Black(context,
-                                        bold: true),
+                                    style: AppTheme.richTextBody1Black(
+                                      context,
+                                      bold: true,
+                                    ),
                                   ),
                                   TextSpan(
                                     text: 'Holding 20 - 29 Wc Workers',
-                                    style: AppTheme.richTextBody1Black(context),
+                                    style: AppTheme.richTextBody1Black(
+                                      context,
+                                    ),
                                   ),
                                 ],
                               ),
@@ -377,7 +389,9 @@ class FaqPage extends StatelessWidget {
                                   ),
                                   TextSpan(
                                     text: 'Holding 30+ WcWorkers',
-                                    style: AppTheme.richTextBody1Black(context),
+                                    style: AppTheme.richTextBody1Black(
+                                      context,
+                                    ),
                                   ),
                                 ],
                               ),

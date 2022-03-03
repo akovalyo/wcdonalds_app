@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'dart:convert' as convert;
 import '../models/worker_nft.dart';
-import 'package:transparent_image/transparent_image.dart';
+
 import 'workers_tab_worker_tile.dart';
 import 'worker_card_to_save.dart';
 
@@ -203,9 +203,9 @@ class _WorkersTabState extends State<WorkersTab> {
               child: const Text('Submit'),
             ),
           ),
-          const SizedBox(
-            height: 20,
-          ),
+          // const SizedBox(
+          //   height: 0,
+          // ),
           _isLoading
               ? Align(
                   alignment: Alignment.center,
