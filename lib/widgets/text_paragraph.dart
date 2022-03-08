@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 class TextParagraph extends StatelessWidget {
   final String text;
   final bool fontFamilyHeadline;
-  final double fontSize;
+  final double? fontSize;
   final bool bold;
-  final TextAlign textAlign;
+  final TextAlign? textAlign;
   const TextParagraph(
     this.text, {
     Key? key,

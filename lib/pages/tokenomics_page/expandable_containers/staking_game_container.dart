@@ -29,8 +29,8 @@ class _StakingGameContainerState extends State<StakingGameContainer> {
           children: const [
             TextParagraph('Sell a total of 555 franchises'),
             SizedBox(height: 5),
-            TextParagraph('1 SOL* - White List'),
-            TextParagraph('1.5* SOL Public'),
+            TextParagraph('0.75 SOL* - White List'),
+            TextParagraph('1.0* SOL - Public'),
             SizedBox(height: 5),
             TextParagraph(
               '*Price can be changed',

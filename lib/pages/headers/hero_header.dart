@@ -31,18 +31,17 @@ class HeroHeader extends StatelessWidget {
             child: Stack(
               alignment: Alignment.center,
               children: [
-                showBackButton
-                    ? Align(
-                        alignment: Alignment.bottomRight,
-                        child: IconButton(
-                          icon: const Icon(
-                            Icons.arrow_back,
-                            color: Colors.black,
-                          ),
-                          onPressed: onTap,
-                        ),
-                      )
-                    : Container(),
+                if (showBackButton)
+                  Align(
+                    alignment: Alignment.bottomRight,
+                    child: IconButton(
+                      icon: const Icon(
+                        Icons.arrow_back,
+                        color: Colors.black,
+                      ),
+                      onPressed: onTap,
+                    ),
+                  ),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [

@@ -21,16 +21,15 @@ class TokenomicsContainerDefault extends StatelessWidget {
           vertical: 10, horizontal: AppTheme.paddingHorizontal),
       child: Column(
         children: [
-          title != null
-              ? Text(
-                  title!,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
-                  ),
-                )
-              : Container(),
-          title != null ? const SizedBox(height: 6) : Container(),
+          if (title != null)
+            Text(
+              title!,
+              style: const TextStyle(
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
+              ),
+            ),
+          if (title != null) const SizedBox(height: 6),
           ImagePlaceholder(
             height: 80,
             // width: 100,

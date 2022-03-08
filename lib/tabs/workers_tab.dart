@@ -206,44 +206,42 @@ class _WorkersTabState extends State<WorkersTab> {
           // const SizedBox(
           //   height: 0,
           // ),
-          _isLoading
-              ? Align(
-                  alignment: Alignment.center,
-                  // ignore: sized_box_for_whitespace
-                  child: Container(
-                      width: 50,
-                      height: 50,
-                      child: const CircularProgressIndicator()),
-                )
-              : Container(),
-          _nftLoaded
-              ? Column(
-                  children: [
-                    _workerTile,
-                    const SizedBox(
-                      height: 5,
+          if (_isLoading)
+            Align(
+              alignment: Alignment.center,
+              // ignore: sized_box_for_whitespace
+              child: Container(
+                  width: 50,
+                  height: 50,
+                  child: const CircularProgressIndicator()),
+            ),
+          if (_nftLoaded)
+            Column(
+              children: [
+                _workerTile,
+                const SizedBox(
+                  height: 5,
+                ),
+                Center(
+                  child: IconButton(
+                    iconSize: 30,
+                    icon: const Icon(
+                      Icons.save,
                     ),
-                    Center(
-                      child: IconButton(
-                        iconSize: 30,
-                        icon: const Icon(
-                          Icons.save,
-                        ),
-                        onPressed: () {
-                          showDialog(
-                              context: context,
-                              builder: (context) {
-                                return WorkerCardToSave(
-                                  workerTile: _workerTile,
-                                  id: _workerNft.id,
-                                );
-                              });
-                        },
-                      ),
-                    ),
-                  ],
-                )
-              : Container(),
+                    onPressed: () {
+                      showDialog(
+                          context: context,
+                          builder: (context) {
+                            return WorkerCardToSave(
+                              workerTile: _workerTile,
+                              id: _workerNft.id,
+                            );
+                          });
+                    },
+                  ),
+                ),
+              ],
+            ),
         ],
       ),
     );

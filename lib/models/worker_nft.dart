@@ -19,6 +19,7 @@ class WorkerNft {
     required this.wage,
   });
 
+//TODO: Remove
   static Future<Map<String, dynamic>> queryNftData(String id) {
     return Future(
       () async {
@@ -47,7 +48,6 @@ class WorkerNft {
 
     // Define rarityRank
     final int rarityInt = attr.last['value'] as int;
-    print('ATTR RARITY:${attr.last['value']}, $rarityInt');
 
     //Define rarityTier and rarityColor
     String rarityTier = '';
