@@ -7,6 +7,7 @@ class AppTheme {
   static const double paddingHorizontal = 8.0;
   static const double maxWidthWidget = 400.0;
   static const double collapsedWidgetHeight = 50.0;
+  static const double expandedWidgetHeight = 220.0;
 
   static TextTheme lightTextTheme = TextTheme(
     bodyText1: GoogleFonts.chakraPetch(

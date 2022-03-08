@@ -11,6 +11,7 @@ import '../navigation/routes.dart';
 import '../pages/headers/hero_header.dart';
 import '../models/web_view_extra_wrapper.dart';
 import '../models/url_launcher.dart';
+import '../models/request.dart';
 
 class WelcomeTab extends StatefulWidget {
   const WelcomeTab({Key? key}) : super(key: key);
@@ -31,7 +32,8 @@ class _WelcomeTabState extends State<WelcomeTab> {
     return Future(() async {
       final Random random = Random();
       final String randomId = random.nextInt(2222).toString();
-      final metadata = await WorkerNft.queryNftData(randomId);
+      final metadata =
+          await Request.get('${Request.nftWorkerUrl}$randomId.json');
       final WorkerNft worker = WorkerNft.fromJson(metadata, randomId);
       return worker.imageUrl;
     });
@@ -57,10 +59,24 @@ class _WelcomeTabState extends State<WelcomeTab> {
                   crossAxisCellCount: 2,
                   mainAxisCellCount: 2,
                   child: buildWorkerTile(() async {
-                    final newUrl = await randomImage();
-                    setState(() {
-                      workerOneImage = newUrl;
-                    });
+                    try {
+                      final newUrl = await randomImage();
+                      if (newUrl.isNotEmpty) {
+                        setState(() {
+                          workerOneImage = newUrl;
+                        });
+                      } else {
+                        throw Exception('Failed to load image');
+                      }
+                    } catch (e) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: const Text('Faild to load image'),
+                          backgroundColor:
+                              Theme.of(context).errorColor.withOpacity(0.7),
+                        ),
+                      );
+                    }
                   }, const Color(0xFFF48FB1), workerOneImage)),
               StaggeredGridTile.count(
                 crossAxisCellCount: 3,
@@ -76,10 +92,24 @@ class _WelcomeTabState extends State<WelcomeTab> {
                   crossAxisCellCount: 3,
                   mainAxisCellCount: 3,
                   child: buildWorkerTile(() async {
-                    final newUrl = await randomImage();
-                    setState(() {
-                      workerTwoImage = newUrl;
-                    });
+                    try {
+                      final newUrl = await randomImage();
+                      if (newUrl.isNotEmpty) {
+                        setState(() {
+                          workerTwoImage = newUrl;
+                        });
+                      } else {
+                        throw Exception('Failed to load image');
+                      }
+                    } catch (e) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: const Text('Faild to load image'),
+                          backgroundColor:
+                              Theme.of(context).errorColor.withOpacity(0.7),
+                        ),
+                      );
+                    }
                   }, const Color(0xfff6d61c), workerTwoImage)),
               StaggeredGridTile.count(
                 crossAxisCellCount: 2,

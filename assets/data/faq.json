@@ -1,0 +1,294 @@
+{
+  "general questions": {
+    "color": "255, 107, 213, 245",
+    "entries": [
+      {
+        "question": "What is Wcdonalds?",
+        "answer": [
+          {
+            "textParagraph": "Wcdonalds is the best fast food enterprise on the Solana Blockchain. We hire and train Wcworkers each has its own rarity and attributes."
+          }
+        ]
+      },
+
+      {
+        "question": "What is the supply?",
+        "expandedHeight": 170,
+        "answer": [
+          {
+            "textParagraph": "We had a total of 2222 positions. All filled (sold out) - Workers counter  [2218/2222]"
+          }
+        ]
+      },
+
+      {
+        "question": "Why is worker counter less than total NFTs minted?",
+        "expandedHeight": 300,
+        "collapsedHeight": 70,
+        "answer": [
+          {
+            "textParagraph": "A total of 4 workers have been fired (by feb 2022)."
+          },
+          {
+            "box": 6
+          },
+          {
+            "textParagraph": "• Workers 1172 and 1369 fired because a fight inside wcdonalds."
+          },
+          {
+            "box": 6
+          },
+          {
+            "textParagraph": "• Worker 1216, fired because of his hate to pickles."
+          },
+          {
+            "box": 6
+          },
+          {
+            "textParagraph": "• Worker 1349, fired because his lack of hygiene."
+          }
+        ]
+      },
+
+      {
+        "question": "What was the mint price?",
+        "expandedHeight": 100,
+        "answer": [
+          {
+            "textParagraph": "0.01 $SOL"
+          }
+        ]
+      },
+
+      {
+        "question": "Is it listed on a secondary market?",
+        "expandedHeight": 200,
+        "collapsedHeight": 70,
+        "answer": [
+          {
+            "textParagraph": "Yes ser, you can get your worker in ME:"
+          },
+          {
+            "link": "https://www.magiceden.io/marketplace/wcdonalds_workers"
+          }
+        ]
+      },
+
+      {
+        "question": "What is the WAO?",
+        "expandedHeight": 200,
+        "answer": [
+          {
+            "textParagraph": "WAO is our DAO because DAO is for losers and WAO is for WINNERS. W = WAGMI"
+          }
+        ]
+      },
+
+      {
+        "question": "What is the utility of being a holder?",
+        "expandedHeight": 450,
+        "answer": [
+          {
+            "textParagraph": "• Contribute to the construction and rising of the best enterprise of the metaverse."
+          },
+          {
+            "textParagraph": "• NFT Staking."
+          },
+          {
+            "textParagraph": "• IRL utility: Meal time (we airdrop 0.1 $SOL randomly to anyone who uploads a picture of the MWcdonalds meal he or she has with the receipt."
+          },
+          {
+            "textParagraph": "• You decide the destiny of some workers with the Human Resources Team."
+          },
+          {
+            "textParagraph": "• Holders airdrops."
+          },
+          {
+            "textParagraph": "• A lot more to come..."
+          }
+        ]
+      },
+
+      {
+        "question": "How does Human Resources work?",
+        "expandedHeight": 400,
+        "answer": [
+          {
+            "textParagraph": "Randomly human resources team leaded by @WcRex will do inspections to some franchise then she will pick up some lazy workers or workers that are doing a bad job. Some of them are fired (out of circulation) and others are sent to training (Giveaway)."
+          },
+          {
+            "box": 12
+          },
+          {
+            "textParagraph": "To know more about this floor sweeping mechanic check discord, go to #🤲-human-resources and #👔-hire-some-workers channels."
+          }
+        ]
+      },
+
+      {
+        "question": "About the team",
+        "expandedHeight": 700,
+        "answer": [
+          {
+            "textParagraph": "We truly believe in the NFTs community and the potential to change the world. We started this project because we got tired of all those ruggs going on. So we wanted to show the community that with diligence and honesty you can actually create a project with value and at the same time have fun. So here we are."
+          },
+          {
+            "box": 12
+          },
+          {
+            "textParagraphBold": "Wcdonald Worker:"
+          },
+          {
+            "textParagraph": "• Full stack web dev;"
+          },
+          {
+            "textParagraph": "• Art director;"
+          },
+          {
+            "textParagraph": "• Community Wanager;"
+          },
+          {
+            "box": 12
+          },
+          {
+            "textParagraphBold": "WcRex:"
+          },
+          {
+            "textParagraph": "• UI designer;"
+          },
+          {
+            "textParagraph": "• Graphic Artist;"
+          },
+          {
+            "textParagraph": "• Brand designer;"
+          },
+          {
+            "box": 12
+          },
+          {
+            "textParagraphBold": "WcShiba:"
+          },
+          {
+            "textParagraph": "• User experience designer (gamification focused);"
+          },
+          {
+            "textParagraph": "• Game designer;"
+          },
+          {
+            "textParagraph": "• Writer;"
+          }
+        ]
+      },
+
+      {
+        "question": "Holder Roles?",
+        "expandedHeight": 300,
+        "answer": [
+          {
+            "textParagraph": "We have 4 tier roles:"
+          },
+          {
+            "box": 12
+          },
+          {
+            "richText": [
+              { "bold": "• Wanager: " },
+              { "normal": "Holding 1+ Wcdonalds Worker" }
+            ]
+          },
+          {
+            "richText": [
+              { "bold": "• Executive Wanager: " },
+              { "normal": "Holding 10 - 19 Wcdonalds Workers" }
+            ]
+          },
+          {
+            "richText": [
+              { "bold": "• Chief Wanager: " },
+              { "normal": "Holding 20 - 29 Wcdonalds Workers" }
+            ]
+          },
+          {
+            "richText": [
+              { "bold": "• Global Wanager: " },
+              { "normal": "Holding 30+ Wcdonalds Workers" }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+
+  "staking questions": {
+    "color": "255, 107, 128, 245",
+    "entries": [
+      {
+        "question": "How many wcdollars does the staked worker (legendary worker) generate?",
+        "expandedHeight": 650,
+        "collapsedHeight": 70,
+        "answer": [
+          {
+            "widget": "workersWage"
+          }
+        ]
+      },
+
+      {
+        "question": "What is the benefit to own a franchise, wanager?",
+        "expandedHeight": 400,
+        "collapsedHeight": 70,
+        "answer": [
+          {
+            "textParagraph": "You will be able to stake your Franchise and Wanagers. Franchise will get 20% of all the $WcDollars claimed per day. Also you will be able to get a worker reassigned to you."
+          },
+          {
+            "textParagraph": "Wanagers will reduce the risk of unstaking a worker and get reassigned to another franchise. Also they have a wage, this means every wanager will generate $WcDollars too."
+          }
+        ]
+      },
+
+      {
+        "question": "Do I need a Franchise to stake my workers?",
+        "expandedHeight": 200,
+        "collapsedHeight": 70,
+        "answer": [
+          {
+            "textParagraph": "No, you can stake your workers without a Franchise. Franchise have its own utilities."
+          }
+        ]
+      },
+
+      {
+        "question": "What does it mean that my worker can be reassigned when I unstake?",
+        "expandedHeight": 200,
+        "collapsedHeight": 70,
+        "answer": [
+          {
+            "textParagraph": "It means you can lose your worker and someone with an Staked Franchise can win that worker."
+          }
+        ]
+      },
+
+      {
+        "question": "How to lower risk of loosing my worker?",
+        "expandedHeight": 200,
+        "collapsedHeight": 70,
+        "answer": [
+          {
+            "textParagraph": "With some Wanagers, depending on the rank of the Wanager you have staked you will reduce the chances of getting your Worker reassigned."
+          }
+        ]
+      },
+
+      {
+        "question": "Is it fair that I can loose my worker?",
+        "expandedHeight": 200,
+        "answer": [
+          {
+            "textParagraph": "That is part of the risk game. It is part of the system, if there is no risk then it would be less attractive and less profitable."
+          }
+        ]
+      }
+    ]
+  }
+}

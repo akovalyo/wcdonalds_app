@@ -9,14 +9,13 @@ class WcBar extends StatelessWidget {
     return AppBar(
       centerTitle: true,
       actions: [
-        backButton
-            ? IconButton(
-                icon: const Icon(Icons.arrow_back),
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-              )
-            : Container()
+        if (backButton)
+          IconButton(
+            icon: const Icon(Icons.arrow_back),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          )
       ],
       title: ImageIcon(
         const AssetImage('assets/images/logo_y.png'),

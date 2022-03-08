@@ -11,6 +11,6 @@ class ErrorPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //TODO:
-    return Container();
+    return const SizedBox();
   }
 }

@@ -76,24 +76,23 @@ class _WorkerCardToSaveState extends State<WorkerCardToSave> {
         width: AppTheme.getMaxWidgetWidth(context),
         child: Stack(
           children: [
-            _isLoading
-                ? Center(
-                    // ignore: sized_box_for_whitespace
-                    child: Container(
-                        width: 40,
-                        height: 40,
-                        child: const AppCircularProgressIndicator()),
-                  )
-                : Container(),
+            if (_isLoading)
+              Center(
+                // ignore: sized_box_for_whitespace
+                child: Container(
+                    width: 40,
+                    height: 40,
+                    child: const AppCircularProgressIndicator()),
+              ),
             ListView(
               children: [
                 RepaintBoundary(
                   key: _key,
                   child: Container(
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       // color: Theme.of(context).colorScheme.primary,
                       color: Color.fromARGB(255, 219, 92, 64),
-                      borderRadius: const BorderRadius.all(Radius.circular(10)),
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
                     ),
                     height: 425,
                     padding: const EdgeInsets.all(10),

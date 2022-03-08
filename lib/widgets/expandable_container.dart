@@ -15,7 +15,7 @@ class ExpandableContainer extends StatefulWidget {
     Key? key,
     required this.titleWidget,
     this.collapsedHeight = AppTheme.collapsedWidgetHeight,
-    required this.expandedHeight,
+    this.expandedHeight = AppTheme.expandedWidgetHeight,
     this.width = AppTheme.maxWidthWidget,
     required this.color,
     required this.child,
@@ -122,14 +122,13 @@ class _ExpandableContainerState extends State<ExpandableContainer>
                           ),
                         )
                       ]),
-                  _sizeAnimation.value == widget.expandedHeight
-                      ? Padding(
-                          padding: const EdgeInsets.only(top: 10.0),
-                          child: Opacity(
-                              opacity: _opacityAnimation.value,
-                              child: widget.child),
-                        )
-                      : Container(),
+                  if (_sizeAnimation.value == widget.expandedHeight)
+                    Padding(
+                      padding: const EdgeInsets.only(top: 10.0),
+                      child: Opacity(
+                          opacity: _opacityAnimation.value,
+                          child: widget.child),
+                    ),
                 ],
               ),
             ),
