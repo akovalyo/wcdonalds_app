@@ -5,6 +5,7 @@ import '../models/worker_nft.dart';
 
 import 'workers_tab_worker_tile.dart';
 import 'worker_card_to_save.dart';
+import '../models/request.dart';
 
 class WorkersTab extends StatefulWidget {
   const WorkersTab({Key? key}) : super(key: key);
@@ -50,15 +51,18 @@ class _WorkersTabState extends State<WorkersTab> {
       _nftLoaded = false;
       _isLoading = true;
     });
-
-    final metadata = await WorkerNft.queryNftData(id);
-    if (metadata.isNotEmpty) {
-      setState(() {
-        _workerNft = WorkerNft.fromJson(metadata, id);
-        _nftLoaded = true;
-        _workerTile = WorkersTabWorkerTile(nft: _workerNft);
-      });
-    } else {
+    try {
+      final metadata = await Request.get('${Request.nftWorkerUrl}$id.json');
+      if (metadata.isNotEmpty) {
+        setState(() {
+          _workerNft = WorkerNft.fromJson(metadata, id);
+          _nftLoaded = true;
+          _workerTile = WorkersTabWorkerTile(nft: _workerNft);
+        });
+      } else {
+        throw Exception('Failed to load image');
+      }
+    } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text('Faild to load worker #$id'),
@@ -66,6 +70,7 @@ class _WorkersTabState extends State<WorkersTab> {
         ),
       );
     }
+
     setState(() {
       _isLoading = false;
     });

@@ -19,24 +19,6 @@ class WorkerNft {
     required this.wage,
   });
 
-//TODO: Remove
-  static Future<Map<String, dynamic>> queryNftData(String id) {
-    return Future(
-      () async {
-        final url = Uri.parse(
-            'https://testlaunchmynft.mypinata.cloud/ipfs/QmbVfkviPGQYwsxzWimUW8t3WMm8Zk58Fx6HZKA2YWzPHL/$id.json');
-        final response = await http.get(url);
-
-        if (response.statusCode == 200) {
-          final jsonResponse =
-              convert.jsonDecode(response.body) as Map<String, dynamic>;
-          return jsonResponse;
-        }
-        return Future.error('Failed to get response');
-      },
-    );
-  }
-
   factory WorkerNft.fromJson(Map<dynamic, dynamic> json, String id) {
     final List<dynamic> attr = (json['attributes'] as List<dynamic>)
         .map((e) => e as Map<String, dynamic>)
