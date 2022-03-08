@@ -12,7 +12,7 @@ Welcome to **Wcdonalds** - the best fast food enterprise on the Solana blockchai
 # Android App
 
 <p align="center">
-  <img src="https://github.com/akovalyo/wcdonalds_app/blob/main/assets/images/android_app.png">
+  <img src="https://github.com/akovalyo/wcdonalds_app/blob/main/assets/images/android_app.jpg">
 </p>
 
 # Ios App
