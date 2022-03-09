@@ -21,6 +21,9 @@ class AppState extends AppStateInterface with ChangeNotifier {
   String get platform => _platform;
 
   @override
+  bool get isIos => _platform == PlatformInfo.ios;
+
+  @override
   Uri? get destUri => _destUri;
 
   @override

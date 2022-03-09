@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:go_router/go_router.dart';
+import 'package:flutter/cupertino.dart';
 
 import 'theme/theme.dart';
 import 'pages/home_page.dart';
@@ -58,16 +59,22 @@ class _WcdonaldsAppState extends State<WcdonaldsApp> {
       ],
       child: Consumer<AppState>(
         builder: (context, appState, child) {
-          ThemeData theme =
+          ThemeData _theme =
               appState.isDarkTheme ? AppTheme.dark() : AppTheme.light();
+          const String _title = 'Welcome to Wcdonalds!';
 
-          return MaterialApp.router(
-            title: 'Welcome to Wcdonalds!',
-            theme: theme,
-            routerDelegate: _goRouter.routerDelegate,
-            routeInformationParser: _goRouter.routeInformationParser,
-            debugShowCheckedModeBanner: false,
-          );
+          return appState.isIos
+              ? CupertinoApp.router(
+                  title: _title,
+                  routeInformationParser: _goRouter.routeInformationParser,
+                  routerDelegate: _goRouter.routerDelegate)
+              : MaterialApp.router(
+                  title: _title,
+                  theme: _theme,
+                  routerDelegate: _goRouter.routerDelegate,
+                  routeInformationParser: _goRouter.routeInformationParser,
+                  debugShowCheckedModeBanner: false,
+                );
         },
       ),
     );
