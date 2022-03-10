@@ -32,27 +32,26 @@ class _WorkerCardToSaveState extends State<WorkerCardToSave> {
     });
 
     String successMessage = 'File saved';
-
     if (platform == PlatformInfo.android) {
       successMessage += ' to "Wcdonalds" folder';
     } else if (platform == PlatformInfo.macOs) {
       successMessage += ' to the Photos Library';
     }
 
-    bool picSaved = await saveNftCard(
-      _key,
-      'WcdonaldsWorker#${widget.id}',
-      platform,
-    );
+    try {
+      await saveNftCard(
+        _key,
+        'WcdonaldsWorker#${widget.id}',
+        platform,
+      );
 
-    if (picSaved) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(successMessage),
           backgroundColor: Colors.green.withOpacity(0.7),
         ),
       );
-    } else {
+    } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: const Text('Faild to save the picture'),
