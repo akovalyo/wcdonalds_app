@@ -58,26 +58,31 @@ class _WelcomeTabState extends State<WelcomeTab> {
               StaggeredGridTile.count(
                   crossAxisCellCount: 2,
                   mainAxisCellCount: 2,
-                  child: buildWorkerTile(() async {
-                    try {
-                      final newUrl = await randomImage();
-                      if (newUrl.isNotEmpty) {
-                        setState(() {
-                          workerOneImage = newUrl;
-                        });
-                      } else {
-                        throw Exception('Failed to load image');
+                  child: buildWorkerTile(
+                    () async {
+                      try {
+                        final newUrl = await randomImage();
+                        if (newUrl.isNotEmpty) {
+                          setState(() {
+                            workerOneImage = newUrl;
+                          });
+                        } else {
+                          throw Exception('Failed to load image');
+                        }
+                      } catch (e) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: const Text('Faild to load image'),
+                            backgroundColor:
+                                Theme.of(context).errorColor.withOpacity(0.7),
+                          ),
+                        );
                       }
-                    } catch (e) {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: const Text('Faild to load image'),
-                          backgroundColor:
-                              Theme.of(context).errorColor.withOpacity(0.7),
-                        ),
-                      );
-                    }
-                  }, const Color(0xFFF48FB1), workerOneImage)),
+                    },
+                    const Color(0xFFF48FB1),
+                    workerOneImage,
+                    const Key('workerImageOne'),
+                  )),
               StaggeredGridTile.count(
                 crossAxisCellCount: 3,
                 mainAxisCellCount: 2,
@@ -91,26 +96,31 @@ class _WelcomeTabState extends State<WelcomeTab> {
               StaggeredGridTile.count(
                   crossAxisCellCount: 3,
                   mainAxisCellCount: 3,
-                  child: buildWorkerTile(() async {
-                    try {
-                      final newUrl = await randomImage();
-                      if (newUrl.isNotEmpty) {
-                        setState(() {
-                          workerTwoImage = newUrl;
-                        });
-                      } else {
-                        throw Exception('Failed to load image');
+                  child: buildWorkerTile(
+                    () async {
+                      try {
+                        final newUrl = await randomImage();
+                        if (newUrl.isNotEmpty) {
+                          setState(() {
+                            workerTwoImage = newUrl;
+                          });
+                        } else {
+                          throw Exception('Failed to load image');
+                        }
+                      } catch (e) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: const Text('Faild to load image'),
+                            backgroundColor:
+                                Theme.of(context).errorColor.withOpacity(0.7),
+                          ),
+                        );
                       }
-                    } catch (e) {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: const Text('Faild to load image'),
-                          backgroundColor:
-                              Theme.of(context).errorColor.withOpacity(0.7),
-                        ),
-                      );
-                    }
-                  }, const Color(0xfff6d61c), workerTwoImage)),
+                    },
+                    const Color(0xfff6d61c),
+                    workerTwoImage,
+                    const Key('workerImageTwo'),
+                  )),
               StaggeredGridTile.count(
                 crossAxisCellCount: 2,
                 mainAxisCellCount: 2,
@@ -204,8 +214,10 @@ class _WelcomeTabState extends State<WelcomeTab> {
     );
   }
 
-  Widget buildWorkerTile(VoidCallback onTap, Color color, String image) {
+  Widget buildWorkerTile(
+      VoidCallback onTap, Color color, String image, Key key) {
     return InkWell(
+      key: key,
       onTap: onTap,
       child: Container(
         color: color,
@@ -217,6 +229,7 @@ class _WelcomeTabState extends State<WelcomeTab> {
 
   Widget buildFranchiseTile() {
     return InkWell(
+      key: const Key('franchiseWidget'),
       onTap: () {
         setState(() {
           franchiseIndex = franchiseIndex == 0 ? 1 : 0;
