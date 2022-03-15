@@ -53,9 +53,13 @@ class _WorkerCardToSaveState extends State<WorkerCardToSave> {
         ),
       );
     } catch (e) {
+      String errorMessage = e.toString();
+      if (errorMessage.contains('Exception')) {
+        errorMessage = errorMessage.split('Exception:').last;
+      }
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: const Text('Faild to save the picture'),
+          content: Text(errorMessage),
           backgroundColor: Theme.of(context).errorColor.withOpacity(0.7),
         ),
       );
