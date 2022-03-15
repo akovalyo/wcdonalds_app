@@ -34,7 +34,7 @@ class _WorkerCardToSaveState extends State<WorkerCardToSave> {
 
     String successMessage = 'File saved';
     if (platform == PlatformInfo.android) {
-      successMessage += ' to "Wcdonalds" folder';
+      successMessage += ' to the Gallery';
     } else if (platform == PlatformInfo.macOs) {
       successMessage += ' to the Photos Library';
     }
