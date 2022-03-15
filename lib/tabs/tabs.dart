@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'news_tab.dart';
 import 'workers_tab.dart';
-import 'welcome_tab.dart';
+import 'welcome_tab/welcome_tab.dart';
 
 class Tab {
   final String label;
@@ -20,7 +20,7 @@ class Tab {
 class Tabs {
   static final home = Tab(
     label: 'Wcdonalds',
-    widget: WelcomeTab(),
+    widget: const WelcomeTab(),
     icon: const ImageIcon(AssetImage('assets/images/logo_w.png')),
   );
 

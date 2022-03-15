@@ -6,12 +6,13 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:go_router/go_router.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
-import '../models/worker_nft.dart';
-import '../navigation/routes.dart';
-import '../pages/headers/hero_header.dart';
-import '../models/web_view_extra_wrapper.dart';
-import '../models/url_launcher.dart';
-import '../models/request.dart';
+import '../../navigation/routes.dart';
+import '../../models/worker_nft.dart';
+import '../../models/web_view_extra_wrapper.dart';
+import '../../models/url_launcher.dart';
+import '../../models/request.dart';
+import '../../widgets/hyperlink.dart';
+import 'tabs.dart';
 
 class WelcomeTab extends StatefulWidget {
   const WelcomeTab({Key? key}) : super(key: key);
@@ -39,6 +40,26 @@ class _WelcomeTabState extends State<WelcomeTab> {
     });
   }
 
+  void loadRandomImage(BuildContext context) async {
+    try {
+      final newUrl = await randomImage();
+      if (newUrl.isNotEmpty) {
+        setState(() {
+          workerOneImage = newUrl;
+        });
+      } else {
+        throw Exception('Failed to load image');
+      }
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: const Text('Faild to load image'),
+          backgroundColor: Theme.of(context).errorColor.withOpacity(0.7),
+        ),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -53,13 +74,19 @@ class _WelcomeTabState extends State<WelcomeTab> {
               StaggeredGridTile.count(
                 crossAxisCellCount: 3,
                 mainAxisCellCount: 1,
-                child: buildWelcomeTile(),
+                child: Container(
+                  color: const Color(0xFF303030),
+                  child: const Image(
+                    image: AssetImage('assets/images/welcome.png'),
+                    width: 50,
+                  ),
+                ),
               ),
               StaggeredGridTile.count(
                   crossAxisCellCount: 2,
                   mainAxisCellCount: 2,
-                  child: buildWorkerTile(
-                    () async {
+                  child: WorkerTile(
+                    onTap: () async {
                       try {
                         final newUrl = await randomImage();
                         if (newUrl.isNotEmpty) {
@@ -79,25 +106,37 @@ class _WelcomeTabState extends State<WelcomeTab> {
                         );
                       }
                     },
-                    const Color(0xFFF48FB1),
-                    workerOneImage,
-                    const Key('workerImageOne'),
+                    color: const Color(0xFFF48FB1),
+                    image: workerOneImage,
+                    keyWidget: const Key('workerImageOne'),
                   )),
               StaggeredGridTile.count(
                 crossAxisCellCount: 3,
                 mainAxisCellCount: 2,
-                child: buildTokenomicsTile(context),
+                child: HeroTile(
+                  tag: 'tokenomics',
+                  title: 'TOKENOMICS',
+                  image: 'assets/images/chart.png',
+                  color: const Color(0xFFFF8A65),
+                  link: Routes.tokenomics.path,
+                ),
               ),
               StaggeredGridTile.count(
                 crossAxisCellCount: 2,
                 mainAxisCellCount: 3,
-                child: buildFaqTile(),
+                child: HeroTile(
+                  tag: 'faq',
+                  title: 'FAQ',
+                  image: 'assets/images/faq.png',
+                  color: const Color(0xFF64B5F6),
+                  link: Routes.faq.path,
+                ),
               ),
               StaggeredGridTile.count(
                   crossAxisCellCount: 3,
                   mainAxisCellCount: 3,
-                  child: buildWorkerTile(
-                    () async {
+                  child: WorkerTile(
+                    onTap: () async {
                       try {
                         final newUrl = await randomImage();
                         if (newUrl.isNotEmpty) {
@@ -117,26 +156,60 @@ class _WelcomeTabState extends State<WelcomeTab> {
                         );
                       }
                     },
-                    const Color(0xfff6d61c),
-                    workerTwoImage,
-                    const Key('workerImageTwo'),
+                    color: const Color(0xfff6d61c),
+                    image: workerTwoImage,
+                    keyWidget: const Key('workerImageTwo'),
                   )),
               StaggeredGridTile.count(
                 crossAxisCellCount: 2,
                 mainAxisCellCount: 2,
-                child: buildFranchiseTile(),
+                child: FranchiseTile(
+                  franchiseIndex: franchiseIndex,
+                  onTap: () {
+                    setState(() {
+                      franchiseIndex = franchiseIndex == 0 ? 1 : 0;
+                    });
+                  },
+                ),
               ),
               StaggeredGridTile.count(
                 crossAxisCellCount: 3,
                 mainAxisCellCount: 1,
-                child: buildWebsiteTile(context),
+                child: Container(
+                  color: Theme.of(context).colorScheme.primary,
+                  child: Container(
+                    color: Theme.of(context).colorScheme.primary,
+                    child: Center(
+                      child: Hyperlink(
+                        title: 'wcdonalds.io',
+                        color: Colors.black,
+                        underline: false,
+                        onTap: () {
+                          context.push(
+                            Routes.webView.path,
+                            extra: WebViewExtraWrapper(
+                                title: 'wcdonalds.io',
+                                webView: const WebView(
+                                  initialUrl: 'https://wcdonalds.io',
+                                  javascriptMode: JavascriptMode.unrestricted,
+                                )),
+                          );
+                        },
+                      ),
+                    ),
+                  ),
+                ),
               ),
               StaggeredGridTile.count(
                 crossAxisCellCount: 1,
                 mainAxisCellCount: 1,
-                child: buildSocialLogoTile(() {
-                  UrlLauncher.openInBrowser('https://discord.gg/cWHBN4XJNj');
-                }, const Color(0xff3f53b4), 'assets/images/discord_logo.png'),
+                child: SocialLogoTile(
+                    onTap: () {
+                      UrlLauncher.openInBrowser(
+                          'https://discord.gg/cWHBN4XJNj');
+                    },
+                    color: const Color(0xff3f53b4),
+                    image: 'assets/images/discord_logo.png'),
               ),
               StaggeredGridTile.count(
                 crossAxisCellCount: 1,
@@ -148,10 +221,13 @@ class _WelcomeTabState extends State<WelcomeTab> {
               StaggeredGridTile.count(
                 crossAxisCellCount: 1,
                 mainAxisCellCount: 1,
-                child: buildSocialLogoTile(() {
-                  UrlLauncher.openInBrowser(
-                      'https://www.instagram.com/wcdonaldsnft/');
-                }, const Color(0xFFBB31D3), 'assets/images/instagram_logo.png'),
+                child: SocialLogoTile(
+                    onTap: () {
+                      UrlLauncher.openInBrowser(
+                          'https://www.instagram.com/wcdonaldsnft/');
+                    },
+                    color: const Color(0xFFBB31D3),
+                    image: 'assets/images/instagram_logo.png'),
               ),
               StaggeredGridTile.count(
                 crossAxisCellCount: 1,
@@ -163,9 +239,13 @@ class _WelcomeTabState extends State<WelcomeTab> {
               StaggeredGridTile.count(
                 crossAxisCellCount: 1,
                 mainAxisCellCount: 1,
-                child: buildSocialLogoTile(() {
-                  UrlLauncher.openInBrowser('https://twitter.com/WcdonaldsNFT');
-                }, const Color(0xff56bbd0), 'assets/images/twitter_logo.png'),
+                child: SocialLogoTile(
+                    onTap: () {
+                      UrlLauncher.openInBrowser(
+                          'https://twitter.com/WcdonaldsNFT');
+                    },
+                    color: const Color(0xff56bbd0),
+                    image: 'assets/images/twitter_logo.png'),
               ),
             ],
           ),
@@ -174,47 +254,7 @@ class _WelcomeTabState extends State<WelcomeTab> {
     );
   }
 
-  Widget buildFaqTile() {
-    return SizedBox(
-      child: HeroHeader(
-        tag: 'faq',
-        title: 'FAQ',
-        image: 'assets/images/faq.png',
-        color: const Color(0xFF64B5F6),
-        onTap: () {
-          // context.push(Routes.faq.path);
-          context.go(Routes.faq.path);
-        },
-      ),
-    );
-  }
-
-  Widget buildTokenomicsTile(BuildContext context) {
-    return SizedBox(
-      child: HeroHeader(
-        tag: 'tokenomics',
-        title: 'TOKENOMICS',
-        image: 'assets/images/chart.png',
-        color: const Color(0xFFFF8A65),
-        onTap: () {
-          context.push(Routes.tokenomics.path);
-          // context.go(Routes.tokenomics.path);
-        },
-      ),
-    );
-  }
-
-  Widget buildWelcomeTile() {
-    return Container(
-      color: const Color(0xFF303030),
-      child: const Image(
-        image: AssetImage('assets/images/welcome.png'),
-        width: 50,
-      ),
-    );
-  }
-
-  Widget buildWorkerTile(
+  Widget buildWorkerTijle(
       VoidCallback onTap, Color color, String image, Key key) {
     return InkWell(
       key: key,
@@ -223,71 +263,6 @@ class _WelcomeTabState extends State<WelcomeTab> {
         color: color,
         child: FadeInImage.memoryNetwork(
             fit: BoxFit.fill, placeholder: kTransparentImage, image: image),
-      ),
-    );
-  }
-
-  Widget buildFranchiseTile() {
-    return InkWell(
-      key: const Key('franchiseWidget'),
-      onTap: () {
-        setState(() {
-          franchiseIndex = franchiseIndex == 0 ? 1 : 0;
-        });
-      },
-      child: Container(
-        color: const Color(0xFFBA68C8),
-        child: AnimatedCrossFade(
-          crossFadeState: franchiseIndex == 0
-              ? CrossFadeState.showSecond
-              : CrossFadeState.showFirst,
-          duration: const Duration(milliseconds: 500),
-          firstChild: const Image(
-            fit: BoxFit.fill,
-            image: AssetImage('assets/images/franchise_1.jpeg'),
-          ),
-          secondChild: const Image(
-            fit: BoxFit.fill,
-            image: AssetImage('assets/images/franchise_2.jpeg'),
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget buildWebsiteTile(BuildContext context) {
-    final WebViewExtraWrapper extra = WebViewExtraWrapper(
-        title: 'wcdonalds.io',
-        webView: const WebView(
-          initialUrl: 'https://wcdonalds.io',
-          javascriptMode: JavascriptMode.unrestricted,
-        ));
-    return Container(
-      color: Theme.of(context).colorScheme.primary,
-      child: InkWell(
-        onTap: () {
-          context.push(Routes.webView.path, extra: extra);
-        },
-        child: const Center(
-          child: Text('wcdonalds.io',
-              style: TextStyle(
-                color: Colors.black,
-              )),
-        ),
-      ),
-    );
-  }
-
-  Widget buildSocialLogoTile(VoidCallback onTap, Color color, String image) {
-    return InkWell(
-      onTap: onTap,
-      child: Container(
-        padding: const EdgeInsets.all(4),
-        color: color,
-        child: Image(
-          image: AssetImage(image),
-          fit: BoxFit.fill,
-        ),
       ),
     );
   }
