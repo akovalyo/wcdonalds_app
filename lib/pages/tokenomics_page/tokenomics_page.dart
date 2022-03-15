@@ -70,7 +70,7 @@ class TokenomicsPage extends StatelessWidget {
                         child: ExpandableContainer(
                           titleWidget:
                               const TokenomicsTitleWidget(title: 'WCDOLLAR'),
-                          expandedHeight: 350,
+                          expandedHeight: 500,
                           color: const Color(0xFF81C784),
                           child: TokenomicsContainerDefault(
                             title: '\$THE WCDOLLAR',
@@ -82,7 +82,12 @@ class TokenomicsPage extends StatelessWidget {
                                     'The \$WcDollar is the precious money we pay our workers. With it you can pay Whappy Meals and it will have more utility in the future.'),
                                 SizedBox(height: 6),
                                 TextParagraph(
-                                    'The Maximum \$WcDollar supply is 20.000.000'),
+                                    'The Maximum \$WcDollar supply is 15.000.000'),
+                                SizedBox(height: 6),
+                                TextParagraph(
+                                    '• 14.000.000 allocated for staking faucet.'),
+                                TextParagraph(
+                                    '• 1.000.000 allocated for community activities: airdrops and giveaways.'),
                               ],
                             ),
                           ),
@@ -95,7 +100,7 @@ class TokenomicsPage extends StatelessWidget {
                         child: ExpandableContainer(
                           titleWidget:
                               const TokenomicsTitleWidget(title: 'RISKY GAME'),
-                          expandedHeight: 650,
+                          expandedHeight: 600,
                           color: const Color(0xFFE57373),
                           child: TokenomicsContainerDefault(
                             imagePath: 'assets/images/dice.png',

@@ -18,170 +18,79 @@ class _WhappyMealContainerState extends State<WhappyMealContainer> {
 
   @override
   Widget build(BuildContext context) {
+    final List<Widget> children = [
+      const SizedBox(height: 12),
+      RichText(
+        text: TextSpan(
+          children: [
+            TextSpan(
+              text: 'Cost: ',
+              style: AppTheme.richTextBody1Black(context, bold: true),
+            ),
+            TextSpan(
+              text: '1000 \$WcdDollars',
+              style: AppTheme.richTextBody1Black(context),
+            ),
+          ],
+        ),
+      ),
+      const SizedBox(height: 6),
+      RichText(
+        text: TextSpan(
+          children: [
+            TextSpan(
+              text: 'Supply: ',
+              style: AppTheme.richTextBody1Black(context, bold: true),
+            ),
+            TextSpan(
+              text: '1000',
+              style: AppTheme.richTextBody1Black(context),
+            ),
+          ],
+        ),
+      ),
+    ];
+
     final List<Widget> slides = [
 // ======== SLIDE1 ========
-      buildSlide(
-        title: '2000',
+      WhappyMealSlide(
+        title: '1000',
         num: '1',
         height: 160,
         body: Column(
-          children: [
-            const SizedBox(height: 12),
-            RichText(
-              text: TextSpan(
-                children: [
-                  TextSpan(
-                    text: 'Cost: ',
-                    style: AppTheme.richTextBody1Black(context, bold: true),
-                  ),
-                  TextSpan(
-                    text: '400 \$WcdDollars',
-                    style: AppTheme.richTextBody1Black(context),
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(height: 6),
-            RichText(
-              text: TextSpan(
-                children: [
-                  TextSpan(
-                    text: 'Supply: ',
-                    style: AppTheme.richTextBody1Black(context, bold: true),
-                  ),
-                  TextSpan(
-                    text: '2000',
-                    style: AppTheme.richTextBody1Black(context),
-                  ),
-                ],
-              ),
-            ),
-          ],
+          children: children,
         ),
       ),
 // ======== SLIDE2 ========
-      buildSlide(
-        title: '1500',
+      WhappyMealSlide(
+        title: '1000',
         num: '2',
         height: 160,
         body: Column(
-          children: [
-            const SizedBox(height: 12),
-            RichText(
-              text: TextSpan(
-                children: [
-                  TextSpan(
-                    text: 'Cost: ',
-                    style: AppTheme.richTextBody1Black(context, bold: true),
-                  ),
-                  TextSpan(
-                    text: '800 \$WcdDollars',
-                    style: AppTheme.richTextBody1Black(context),
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(height: 6),
-            RichText(
-              text: TextSpan(
-                children: [
-                  TextSpan(
-                    text: 'Supply: ',
-                    style: AppTheme.richTextBody1Black(context, bold: true),
-                  ),
-                  TextSpan(
-                    text: '2000',
-                    style: AppTheme.richTextBody1Black(context),
-                  ),
-                ],
-              ),
-            ),
-          ],
+          children: children,
         ),
       ),
 // ======== SLIDE3 ========
-      buildSlide(
-        title: '3. STAKE FRANCHISE',
+      WhappyMealSlide(
+        title: '1000',
         num: '3',
         height: 160,
         body: Column(
-          children: [
-            const SizedBox(height: 12),
-            RichText(
-              text: TextSpan(
-                children: [
-                  TextSpan(
-                    text: 'Cost: ',
-                    style: AppTheme.richTextBody1Black(context, bold: true),
-                  ),
-                  TextSpan(
-                    text: '1000 \$WcdDollars',
-                    style: AppTheme.richTextBody1Black(context),
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(height: 6),
-            RichText(
-              text: TextSpan(
-                children: [
-                  TextSpan(
-                    text: 'Supply: ',
-                    style: AppTheme.richTextBody1Black(context, bold: true),
-                  ),
-                  TextSpan(
-                    text: '1000',
-                    style: AppTheme.richTextBody1Black(context),
-                  ),
-                ],
-              ),
-            ),
-          ],
+          children: children,
         ),
       ),
 // ======== SLIDE4 ========
-      buildSlide(
-        title: '500',
+      WhappyMealSlide(
+        title: '1000',
         num: '4',
         height: 160,
         body: Column(
-          children: [
-            const SizedBox(height: 12),
-            RichText(
-              text: TextSpan(
-                children: [
-                  TextSpan(
-                    text: 'Cost: ',
-                    style: AppTheme.richTextBody1Black(context, bold: true),
-                  ),
-                  TextSpan(
-                    text: '2000 \$WcdDollars',
-                    style: AppTheme.richTextBody1Black(context),
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(height: 6),
-            RichText(
-              text: TextSpan(
-                children: [
-                  TextSpan(
-                    text: 'Supply: ',
-                    style: AppTheme.richTextBody1Black(context, bold: true),
-                  ),
-                  TextSpan(
-                    text: '500',
-                    style: AppTheme.richTextBody1Black(context),
-                  ),
-                ],
-              ),
-            ),
-          ],
+          children: children,
         ),
       ),
 
 // ======== SLIDE5 ========
-      buildSlide(
+      WhappyMealSlide(
         title: 'NEW PHASE',
         num: '?',
         height: 220,
@@ -323,13 +232,23 @@ class _WhappyMealContainerState extends State<WhappyMealContainer> {
       ),
     );
   }
+}
 
-  Widget buildSlide({
-    required String title,
-    required Widget body,
-    double height = 200,
-    required String num,
-  }) {
+class WhappyMealSlide extends StatelessWidget {
+  final String title;
+  final Widget body;
+  final double height;
+  final String num;
+  const WhappyMealSlide({
+    Key? key,
+    required this.title,
+    required this.body,
+    this.height = 200,
+    required this.num,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
     return Container(
       color: const Color.fromARGB(255, 216, 71, 68),
       height: height,
