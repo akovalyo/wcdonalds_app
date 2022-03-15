@@ -201,6 +201,36 @@ class _WelcomeTabState extends State<WelcomeTab> {
                 ),
               ),
               StaggeredGridTile.count(
+                crossAxisCellCount: 2,
+                mainAxisCellCount: 1,
+                child: Container(
+                  decoration: const BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment.topRight,
+                      end: Alignment.bottomLeft,
+                      stops: [
+                        0.3,
+                        0.4,
+                        0.9,
+                      ],
+                      colors: [
+                        Color(0xFF00FFA3),
+                        Color(0xFF03E1FF),
+                        Color(0xFFDC1FFF),
+                      ],
+                    ),
+                  ),
+                  child: SolPriceTile(),
+                ),
+              ),
+              StaggeredGridTile.count(
+                crossAxisCellCount: 3,
+                mainAxisCellCount: 1,
+                child: Container(
+                  color: Colors.yellow[400],
+                ),
+              ),
+              StaggeredGridTile.count(
                 crossAxisCellCount: 1,
                 mainAxisCellCount: 1,
                 child: SocialLogoTile(
@@ -250,19 +280,6 @@ class _WelcomeTabState extends State<WelcomeTab> {
             ],
           ),
         ],
-      ),
-    );
-  }
-
-  Widget buildWorkerTijle(
-      VoidCallback onTap, Color color, String image, Key key) {
-    return InkWell(
-      key: key,
-      onTap: onTap,
-      child: Container(
-        color: color,
-        child: FadeInImage.memoryNetwork(
-            fit: BoxFit.fill, placeholder: kTransparentImage, image: image),
       ),
     );
   }
