@@ -6,13 +6,10 @@ import 'package:go_router/go_router.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 import '../../navigation/routes.dart';
-import '../../models/worker_nft.dart';
 import '../../models/web_view_extra_wrapper.dart';
 import '../../models/url_launcher.dart';
-import '../../models/request.dart';
 import '../../widgets/hyperlink.dart';
 import 'tiles.dart';
-import '../../models/collection_stat.dart';
 
 class WelcomeTab extends StatefulWidget {
   const WelcomeTab({Key? key}) : super(key: key);
@@ -22,43 +19,7 @@ class WelcomeTab extends StatefulWidget {
 }
 
 class _WelcomeTabState extends State<WelcomeTab> {
-  String workerOneImage =
-      'https://testlaunchmynft.mypinata.cloud/ipfs/QmT5mjn82ivmNzykGcyQMmWhudUpvQwGhTQwSRozEj5Tbh/70.png';
-  String workerTwoImage =
-      'https://testlaunchmynft.mypinata.cloud/ipfs/QmT5mjn82ivmNzykGcyQMmWhudUpvQwGhTQwSRozEj5Tbh/1525.png';
-
   int franchiseIndex = 0;
-
-  Future<String> randomImage() {
-    return Future(() async {
-      final Random random = Random();
-      final String randomId = random.nextInt(2222).toString();
-      final metadata =
-          await Request.get('${Request.nftWorkerUrl}$randomId.json');
-      final WorkerNft worker = WorkerNft.fromJson(metadata, randomId);
-      return worker.imageUrl;
-    });
-  }
-
-  void loadRandomImage(BuildContext context) async {
-    try {
-      final newUrl = await randomImage();
-      if (newUrl.isNotEmpty) {
-        setState(() {
-          workerOneImage = newUrl;
-        });
-      } else {
-        throw Exception('Failed to load image');
-      }
-    } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: const Text('Faild to load image'),
-          backgroundColor: Theme.of(context).errorColor.withOpacity(0.7),
-        ),
-      );
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -82,33 +43,14 @@ class _WelcomeTabState extends State<WelcomeTab> {
                   ),
                 ),
               ),
-              StaggeredGridTile.count(
+              const StaggeredGridTile.count(
                   crossAxisCellCount: 2,
                   mainAxisCellCount: 2,
                   child: WorkerTile(
-                    onTap: () async {
-                      try {
-                        final newUrl = await randomImage();
-                        if (newUrl.isNotEmpty) {
-                          setState(() {
-                            workerOneImage = newUrl;
-                          });
-                        } else {
-                          throw Exception('Failed to load image');
-                        }
-                      } catch (e) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: const Text('Faild to load image'),
-                            backgroundColor:
-                                Theme.of(context).errorColor.withOpacity(0.7),
-                          ),
-                        );
-                      }
-                    },
-                    color: const Color(0xFFF48FB1),
-                    image: workerOneImage,
-                    keyWidget: const Key('workerImageOne'),
+                    defaultImage:
+                        'https://testlaunchmynft.mypinata.cloud/ipfs/QmT5mjn82ivmNzykGcyQMmWhudUpvQwGhTQwSRozEj5Tbh/70.png',
+                    color: Color(0xFFF48FB1),
+                    keyWidget: Key('workerImageOne'),
                   )),
               StaggeredGridTile.count(
                 crossAxisCellCount: 3,
@@ -132,33 +74,14 @@ class _WelcomeTabState extends State<WelcomeTab> {
                   link: Routes.faq.path,
                 ),
               ),
-              StaggeredGridTile.count(
+              const StaggeredGridTile.count(
                   crossAxisCellCount: 3,
                   mainAxisCellCount: 3,
                   child: WorkerTile(
-                    onTap: () async {
-                      try {
-                        final newUrl = await randomImage();
-                        if (newUrl.isNotEmpty) {
-                          setState(() {
-                            workerTwoImage = newUrl;
-                          });
-                        } else {
-                          throw Exception('Failed to load image');
-                        }
-                      } catch (e) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: const Text('Faild to load image'),
-                            backgroundColor:
-                                Theme.of(context).errorColor.withOpacity(0.7),
-                          ),
-                        );
-                      }
-                    },
-                    color: const Color(0xfff6d61c),
-                    image: workerTwoImage,
-                    keyWidget: const Key('workerImageTwo'),
+                    color: Color(0xfff6d61c),
+                    defaultImage:
+                        'https://testlaunchmynft.mypinata.cloud/ipfs/QmT5mjn82ivmNzykGcyQMmWhudUpvQwGhTQwSRozEj5Tbh/1525.png',
+                    keyWidget: Key('workerImageTwo'),
                   )),
               StaggeredGridTile.count(
                 crossAxisCellCount: 2,
@@ -228,12 +151,8 @@ class _WelcomeTabState extends State<WelcomeTab> {
                 mainAxisCellCount: 1,
                 child: Container(
                   color: Colors.pink[400],
-                  child: CollectionsStatTile(
+                  child: const CollectionsStatTile(
                     title: 'WORKERS',
-                    collectionStat: CollectionStat(
-                      symbol: CollectionStat.workerSymbol,
-                      imagePath: 'assets/images/worker_wback.png',
-                    ),
                   ),
                 ),
               ),
@@ -242,11 +161,8 @@ class _WelcomeTabState extends State<WelcomeTab> {
                 mainAxisCellCount: 1,
                 child: Container(
                   color: Colors.limeAccent[400],
-                  child: CollectionsStatTile(
+                  child: const CollectionsStatTile(
                     title: 'WANAGERS',
-                    collectionStat: CollectionStat(
-                        symbol: CollectionStat.wanagerSymbol,
-                        imagePath: 'assets/images/wanager.png'),
                   ),
                 ),
               ),

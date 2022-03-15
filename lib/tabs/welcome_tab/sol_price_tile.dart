@@ -23,10 +23,17 @@ class _SolPriceTileState extends State<SolPriceTile> {
     try {
       final response = await Request.get(
           'https://api.binance.com/api/v3/avgPrice?symbol=SOLUSDT');
+
       setState(() {
         solPrice = response['price'];
       });
     } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Sol price: ${e.toString()}'),
+          backgroundColor: Theme.of(context).errorColor.withOpacity(0.7),
+        ),
+      );
       setState(() {
         solPrice = '?';
       });
@@ -37,6 +44,9 @@ class _SolPriceTileState extends State<SolPriceTile> {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
+        setState(() {
+          solPrice = '?';
+        });
         getSolPrice();
       },
       child: Padding(

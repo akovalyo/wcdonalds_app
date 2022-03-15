@@ -5,11 +5,9 @@ import '../../widgets/image_placeholder.dart';
 import '../../models/collection_stat.dart';
 
 class CollectionsStatTile extends StatefulWidget {
-  final CollectionStat collectionStat;
   final String title;
   const CollectionsStatTile({
     Key? key,
-    required this.collectionStat,
     required this.title,
   }) : super(key: key);
 
@@ -18,13 +16,21 @@ class CollectionsStatTile extends StatefulWidget {
 }
 
 class _CollectionsStatTileState extends State<CollectionsStatTile> {
-  // CollectionStat workers = CollectionStat(symbol: CollectionStat.workerSymbol);
-  // CollectionStat wanagers =
-  //     CollectionStat(symbol: CollectionStat.wanagerSymbol);
+  late CollectionStat collectionStat;
 
   @override
   void initState() {
-    getFloorPrice(widget.collectionStat.symbol);
+    if (widget.title == 'WORKERS') {
+      collectionStat = CollectionStat(
+        symbol: CollectionStat.workerSymbol,
+        imagePath: 'assets/images/worker_wback.png',
+      );
+    } else {
+      collectionStat = CollectionStat(
+          symbol: CollectionStat.wanagerSymbol,
+          imagePath: 'assets/images/wanager.png');
+    }
+    getFloorPrice(collectionStat.symbol);
     super.initState();
   }
 
@@ -33,12 +39,18 @@ class _CollectionsStatTileState extends State<CollectionsStatTile> {
       final response = await Request.get(
           'https://api-mainnet.magiceden.dev/v2/collections/$symbol/stats');
       setState(() {
-        widget.collectionStat
-            .update(response['floorPrice'], response['listedCount']);
+        collectionStat.update(response['floorPrice'], response['listedCount']);
       });
     } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content:
+              Text('Collection ${widget.title.toLowerCase()}: ${e.toString()}'),
+          backgroundColor: Theme.of(context).errorColor.withOpacity(0.7),
+        ),
+      );
       setState(() {
-        widget.collectionStat.clear();
+        collectionStat.clear();
       });
     }
   }
@@ -54,79 +66,79 @@ class _CollectionsStatTileState extends State<CollectionsStatTile> {
       fontFamily: Theme.of(context).textTheme.bodyText1?.fontFamily,
       fontSize: 12,
     );
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 8.0),
-      child: Center(
-        child: SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SizedBox(
-                    height: 30,
-                    width: 30,
-                    child: ImagePlaceholder(
+    return InkWell(
+      onTap: () {
+        setState(() {
+          collectionStat.clear();
+        });
+
+        getFloorPrice(collectionStat.symbol);
+      },
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+        child: Center(
+          child: SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SizedBox(
                       height: 30,
                       width: 30,
-                      imagePath: widget.collectionStat.imagePath,
-                      placeholder: Container(
+                      child: ImagePlaceholder(
                         height: 30,
                         width: 30,
-                        color: Colors.transparent,
+                        imagePath: collectionStat.imagePath,
+                        placeholder: Container(
+                          height: 30,
+                          width: 30,
+                          color: Colors.transparent,
+                        ),
                       ),
                     ),
-                  ),
-                  Text(
-                    widget.title,
-                    style: titleStyle,
-                  ),
-                ],
-              ),
-              const SizedBox(
-                width: 10,
-              ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    widget.collectionStat.floorPrice == 0
-                        ? 'FP: ?'
-                        : 'FP: ${(widget.collectionStat.floorPrice.toDouble() / 1000000000).toStringAsFixed(2)} Sol',
-                    style: textStyle,
-                  ),
-                  Text(
-                    widget.collectionStat.totalListed == 0
-                        ? 'Listed: ?'
-                        : 'Listed: ${widget.collectionStat.totalListed.toString()}',
-                    style: textStyle,
-                  ),
-                ],
-              ),
-              const SizedBox(
-                width: 5,
-              ),
-              SizedBox(
-                height: 25,
-                width: 25,
-                child: InkWell(
-                  onTap: () {
-                    setState(() {
-                      widget.collectionStat.clear();
-                    });
-
-                    getFloorPrice(widget.collectionStat.symbol);
-                  },
-                  child: const Icon(
+                    Text(
+                      widget.title,
+                      style: titleStyle,
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      collectionStat.floorPrice == 0
+                          ? 'FP: ?'
+                          : 'FP: ${(collectionStat.floorPrice.toDouble() / 1000000000).toStringAsFixed(2)} Sol',
+                      style: textStyle,
+                    ),
+                    Text(
+                      collectionStat.totalListed == 0
+                          ? 'Listed: ?'
+                          : 'Listed: ${collectionStat.totalListed.toString()}',
+                      style: textStyle,
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  width: 5,
+                ),
+                const SizedBox(
+                  height: 25,
+                  width: 25,
+                  child: Icon(
                     Icons.refresh,
                     color: Colors.black,
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

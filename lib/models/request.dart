@@ -24,6 +24,9 @@ class Request {
       final jsonResponse =
           convert.jsonDecode(response.body) as Map<String, dynamic>;
       return jsonResponse;
+    } else if (response.statusCode == 418 || response.statusCode == 429) {
+      return Future.error(
+          'Please limit request rate or your IP will be banned');
     }
     return Future.error('Failed to get response');
   }
