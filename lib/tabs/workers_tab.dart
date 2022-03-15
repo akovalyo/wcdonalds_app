@@ -183,11 +183,11 @@ class _WorkersTabState extends State<WorkersTab> {
             height: 10,
           ),
           Center(
-            child: Hyperlink(
-              title: 'Submit',
-              fontSize: 20,
-              color: Theme.of(context).colorScheme.secondary,
-              onTap: () {
+            child: ElevatedButton(
+              child: const Text(
+                'Submit',
+              ),
+              onPressed: () {
                 if (_formKey.currentState!.validate()) {
                   String id = _inputController.text;
                   if (_searchByIndex == 1) {

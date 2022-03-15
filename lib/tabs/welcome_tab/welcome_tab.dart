@@ -1,7 +1,6 @@
 import 'dart:math';
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:transparent_image/transparent_image.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:go_router/go_router.dart';
 import 'package:webview_flutter/webview_flutter.dart';
@@ -12,7 +11,8 @@ import '../../models/web_view_extra_wrapper.dart';
 import '../../models/url_launcher.dart';
 import '../../models/request.dart';
 import '../../widgets/hyperlink.dart';
-import 'tabs.dart';
+import 'tiles.dart';
+import '../../models/collection_stat.dart';
 
 class WelcomeTab extends StatefulWidget {
   const WelcomeTab({Key? key}) : super(key: key);
@@ -202,7 +202,7 @@ class _WelcomeTabState extends State<WelcomeTab> {
               ),
               StaggeredGridTile.count(
                 crossAxisCellCount: 2,
-                mainAxisCellCount: 1,
+                mainAxisCellCount: 2,
                 child: Container(
                   decoration: const BoxDecoration(
                     gradient: LinearGradient(
@@ -220,14 +220,34 @@ class _WelcomeTabState extends State<WelcomeTab> {
                       ],
                     ),
                   ),
-                  child: SolPriceTile(),
+                  child: const SolPriceTile(),
                 ),
               ),
               StaggeredGridTile.count(
                 crossAxisCellCount: 3,
                 mainAxisCellCount: 1,
                 child: Container(
-                  color: Colors.yellow[400],
+                  color: Colors.pink[400],
+                  child: CollectionsStatTile(
+                    title: 'WORKERS',
+                    collectionStat: CollectionStat(
+                      symbol: CollectionStat.workerSymbol,
+                      imagePath: 'assets/images/worker_wback.png',
+                    ),
+                  ),
+                ),
+              ),
+              StaggeredGridTile.count(
+                crossAxisCellCount: 3,
+                mainAxisCellCount: 1,
+                child: Container(
+                  color: Colors.limeAccent[400],
+                  child: CollectionsStatTile(
+                    title: 'WANAGERS',
+                    collectionStat: CollectionStat(
+                        symbol: CollectionStat.wanagerSymbol,
+                        imagePath: 'assets/images/wanager.png'),
+                  ),
                 ),
               ),
               StaggeredGridTile.count(

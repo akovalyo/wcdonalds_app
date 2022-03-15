@@ -116,6 +116,17 @@ class AppTheme {
           ),
         ),
       ),
+      elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ButtonStyle(
+          textStyle: MaterialStateProperty.all(
+            TextStyle(
+              fontSize: 18,
+              fontFamily: GoogleFonts.chakraPetch().fontFamily,
+              color: Colors.white,
+            ),
+          ),
+        ),
+      ),
       textTheme: lightTextTheme,
     );
   }
@@ -147,6 +158,17 @@ class AppTheme {
               fontSize: 18,
               decoration: TextDecoration.underline,
               color: ThemeColors.secondary,
+            ),
+          ),
+        ),
+      ),
+      elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ButtonStyle(
+          textStyle: MaterialStateProperty.all(
+            TextStyle(
+              fontSize: 18,
+              fontFamily: GoogleFonts.chakraPetch().fontFamily,
+              color: Colors.white,
             ),
           ),
         ),

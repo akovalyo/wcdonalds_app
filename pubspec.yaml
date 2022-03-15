@@ -3,7 +3,7 @@ description: The best fast food enterprise and burgas flippers of all the metave
 
 publish_to: 'none' 
 
-version: 0.1.0+2
+version: 0.2.0+3
 
 environment:
   sdk: ">=2.17.0-69.2.beta <3.0.0"
@@ -26,7 +26,6 @@ dependencies:
   image_gallery_saver: ^1.7.1
   carousel_slider: ^4.0.0
   url_launcher: ^6.0.20
-  # web_socket_channel: ^2.1.0
 
 
 
@@ -64,6 +63,7 @@ flutter:
     - assets/images/instagram_logo.png
     - assets/images/discord_logo.png
     - assets/images/solana_logo.png
+    - assets/images/wanager.png
     - assets/images/global.gif
     - assets/data/rarity.json
     - assets/data/faq.json

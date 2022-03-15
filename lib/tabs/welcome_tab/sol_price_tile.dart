@@ -56,8 +56,8 @@ class _SolPriceTileState extends State<SolPriceTile> {
                     width: 20,
                     imagePath: 'assets/images/solana_logo.png',
                     placeholder: Container(
-                      height: 80,
-                      width: 80,
+                      height: 20,
+                      width: 20,
                       color: Colors.transparent,
                     ),
                   ),
@@ -72,8 +72,8 @@ class _SolPriceTileState extends State<SolPriceTile> {
                   style: TextStyle(
                     color: Colors.black,
                     fontFamily:
-                        Theme.of(context).textTheme.headline1?.fontFamily,
-                    fontSize: 12,
+                        Theme.of(context).textTheme.bodyText1?.fontFamily,
+                    fontSize: 18,
                   ),
                 ),
                 const SizedBox(
