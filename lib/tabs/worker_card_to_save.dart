@@ -7,6 +7,7 @@ import '../io/io.dart';
 import '../widgets/app_circular_progress_indicator.dart';
 import '../models/platform.dart';
 import '../models/app_state.dart';
+import '../widgets/hyperlink.dart';
 
 class WorkerCardToSave extends StatefulWidget {
   final WorkersTabWorkerTile workerTile;
@@ -122,17 +123,25 @@ class _WorkerCardToSaveState extends State<WorkerCardToSave> {
                   direction: Axis.horizontal,
                   alignment: WrapAlignment.center,
                   children: [
-                    TextButton(
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                      },
-                      child: const Text('Close'),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Hyperlink(
+                        title: 'Close',
+                        fontSize: 20,
+                        onTap: () {
+                          Navigator.of(context).pop();
+                        },
+                      ),
                     ),
-                    TextButton(
-                      onPressed: () {
-                        saveCard(appState.platform);
-                      },
-                      child: const Text('Save'),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Hyperlink(
+                        title: 'Save',
+                        fontSize: 20,
+                        onTap: () {
+                          saveCard(appState.platform);
+                        },
+                      ),
                     ),
                   ],
                 ),

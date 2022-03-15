@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:wcdonalds_app/models/web_view_extra_wrapper.dart';
-import 'package:webview_flutter/webview_flutter.dart';
 
 import '../models/web_view_extra_wrapper.dart';
 import '../pages/pages.dart';
@@ -35,7 +34,6 @@ class Routes {
         TokenomicsPage.page(
       key: state.pageKey,
     ),
-    // routes: [home],
   );
 
   static final faq = GoRoute(

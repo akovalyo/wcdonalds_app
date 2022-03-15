@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
 import '../models/app_state.dart';
+import '../widgets/hyperlink.dart';
 
 class WcDrawer extends StatefulWidget {
   const WcDrawer({Key? key}) : super(key: key);
@@ -93,12 +94,21 @@ class _WcDrawerState extends State<WcDrawer> {
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(bottom: 10.0),
+              padding: const EdgeInsets.only(bottom: 0.0),
               child: Text(
                 "v${_packageInfo.version}",
                 style: const TextStyle(
                   fontSize: 12,
                 ),
+              ),
+            ),
+            const Padding(
+              padding: EdgeInsets.only(bottom: 5.0),
+              child: Hyperlink(
+                title: 'Privacy Policy',
+                link:
+                    'https://www.privacypolicies.com/live/7c6ad4b3-d621-450a-88e5-2a33906f0dd3',
+                fontSize: 12,
               ),
             ),
           ],

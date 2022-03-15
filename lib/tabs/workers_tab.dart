@@ -6,6 +6,7 @@ import '../models/worker_nft.dart';
 import 'workers_tab_worker_tile.dart';
 import 'worker_card_to_save.dart';
 import '../models/request.dart';
+import '../widgets/hyperlink.dart';
 
 class WorkersTab extends StatefulWidget {
   const WorkersTab({Key? key}) : super(key: key);
@@ -178,9 +179,15 @@ class _WorkersTabState extends State<WorkersTab> {
               ),
             ),
           ),
+          const SizedBox(
+            height: 10,
+          ),
           Center(
-            child: TextButton(
-              onPressed: () {
+            child: Hyperlink(
+              title: 'Submit',
+              fontSize: 20,
+              color: Theme.of(context).colorScheme.secondary,
+              onTap: () {
                 if (_formKey.currentState!.validate()) {
                   String id = _inputController.text;
                   if (_searchByIndex == 1) {
@@ -205,20 +212,16 @@ class _WorkersTabState extends State<WorkersTab> {
                   }
                 }
               },
-              child: const Text('Submit'),
             ),
           ),
-          // const SizedBox(
-          //   height: 0,
-          // ),
+          const SizedBox(
+            height: 10,
+          ),
           if (_isLoading)
-            Align(
+            const Align(
               alignment: Alignment.center,
-              // ignore: sized_box_for_whitespace
-              child: Container(
-                  width: 50,
-                  height: 50,
-                  child: const CircularProgressIndicator()),
+              child: SizedBox(
+                  width: 50, height: 50, child: CircularProgressIndicator()),
             ),
           if (_nftLoaded)
             Column(
