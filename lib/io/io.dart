@@ -44,7 +44,9 @@ Future<void> saveNftCard(
       throw Exception('Failed to get permission');
     }
     //Save image on iOS
-  } else if (platform == PlatformInfo.macOs) {
+  } else if (platform == PlatformInfo.ios) {
+    final status = await Permission.photos.status;
+
     if (await requestPermission(Permission.photos)) {
       ImageGallerySaver.saveImage(
         pngBytes,
