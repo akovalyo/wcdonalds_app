@@ -28,7 +28,7 @@ class HeroTile extends StatelessWidget {
         image: image,
         color: color,
         onTap: () {
-          context.go(link);
+          context.push(link);
         },
       ),
     );
