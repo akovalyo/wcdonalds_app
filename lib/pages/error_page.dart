@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../widgets/wc_bar.dart';
 import '../theme/theme.dart';
 import '../widgets/wc_drawer.dart';
+import '../widgets/hyperlink.dart';
 
 class ErrorPage extends StatelessWidget {
   const ErrorPage({Key? key}) : super(key: key);
@@ -43,6 +44,12 @@ class ErrorPage extends StatelessWidget {
                   'Oops! Looks like the page doesn\'t exist.',
                   style: Theme.of(context).textTheme.headline3,
                   textAlign: TextAlign.center,
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                const Hyperlink(
+                  title: 'Return to the Home page',
                 ),
               ],
             ),
