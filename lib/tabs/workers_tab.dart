@@ -1,12 +1,14 @@
+import 'dart:convert' as convert;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'dart:convert' as convert;
-import '../models/worker_nft.dart';
+import 'package:provider/provider.dart';
+import 'package:wcdonalds_app/models/platform.dart';
 
 import 'workers_tab_worker_tile.dart';
 import 'worker_card_to_save.dart';
 import '../models/request.dart';
-import '../widgets/hyperlink.dart';
+import '../models/worker_nft.dart';
+import '../models/app_state.dart';
 
 class WorkersTab extends StatefulWidget {
   const WorkersTab({Key? key}) : super(key: key);
@@ -79,7 +81,9 @@ class _WorkersTabState extends State<WorkersTab> {
 
   @override
   Widget build(BuildContext context) {
+    final AppState appState = context.read<AppState>();
     return InkWell(
+      mouseCursor: SystemMouseCursors.basic,
       overlayColor: MaterialStateProperty.all(Colors.transparent),
       onTap: () {
         final FocusScopeNode currentScope = FocusScope.of(context);
@@ -230,24 +234,25 @@ class _WorkersTabState extends State<WorkersTab> {
                 const SizedBox(
                   height: 5,
                 ),
-                Center(
-                  child: IconButton(
-                    iconSize: 30,
-                    icon: const Icon(
-                      Icons.save,
+                if (appState.platform != PlatformInfo.web)
+                  Center(
+                    child: IconButton(
+                      iconSize: 30,
+                      icon: const Icon(
+                        Icons.save,
+                      ),
+                      onPressed: () {
+                        showDialog(
+                            context: context,
+                            builder: (context) {
+                              return WorkerCardToSave(
+                                workerTile: _workerTile,
+                                id: _workerNft.id,
+                              );
+                            });
+                      },
                     ),
-                    onPressed: () {
-                      showDialog(
-                          context: context,
-                          builder: (context) {
-                            return WorkerCardToSave(
-                              workerTile: _workerTile,
-                              id: _workerNft.id,
-                            );
-                          });
-                    },
                   ),
-                ),
               ],
             ),
         ],
