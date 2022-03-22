@@ -62,6 +62,7 @@ flutter:
     - assets/images/discord_logo.png
     - assets/images/solana_logo.png
     - assets/images/wanager.png
+    - assets/images/me.png
     - assets/images/global.gif
     - assets/data/rarity.json
     - assets/data/faq.json

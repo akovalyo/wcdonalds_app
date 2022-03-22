@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wcdonalds_app/models/url_launcher.dart';
 
 import '../../models/request.dart';
 import '../../widgets/image_placeholder.dart';
@@ -59,6 +60,7 @@ class _CollectionsStatTileState extends State<CollectionsStatTile> {
   Widget build(BuildContext context) {
     final textStyle = TextStyle(
       color: Colors.black,
+      fontSize: 16,
       fontFamily: Theme.of(context).textTheme.bodyText1?.fontFamily,
     );
     final titleStyle = TextStyle(
@@ -66,79 +68,105 @@ class _CollectionsStatTileState extends State<CollectionsStatTile> {
       fontFamily: Theme.of(context).textTheme.bodyText1?.fontFamily,
       fontSize: 12,
     );
-    return InkWell(
-      onTap: () {
-        setState(() {
-          collectionStat.clear();
-        });
-
-        getFloorPrice(collectionStat.symbol);
-      },
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 8.0),
-        child: Center(
-          child: SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SizedBox(
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+      child: Center(
+        child: SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SizedBox(
+                    height: 30,
+                    width: 30,
+                    child: ImagePlaceholder(
                       height: 30,
                       width: 30,
-                      child: ImagePlaceholder(
+                      imagePath: collectionStat.imagePath,
+                      placeholder: Container(
                         height: 30,
                         width: 30,
-                        imagePath: collectionStat.imagePath,
+                        color: Colors.transparent,
+                      ),
+                    ),
+                  ),
+                  Text(
+                    widget.title,
+                    style: titleStyle,
+                  ),
+                ],
+              ),
+              const SizedBox(
+                width: 10,
+              ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    collectionStat.floorPrice == 0
+                        ? 'FP: ?'
+                        : 'FP: ${(collectionStat.floorPrice.toDouble() / 1000000000).toStringAsFixed(2)} Sol',
+                    style: textStyle,
+                  ),
+                  Text(
+                    collectionStat.totalListed == 0
+                        ? 'Listed: ?'
+                        : 'Listed: ${collectionStat.totalListed.toString()}',
+                    style: textStyle,
+                  ),
+                ],
+              ),
+              const SizedBox(
+                width: 10,
+              ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SizedBox(
+                    height: 25,
+                    width: 25,
+                    child: InkWell(
+                      onTap: () {
+                        setState(() {
+                          collectionStat.clear();
+                        });
+
+                        getFloorPrice(collectionStat.symbol);
+                      },
+                      child: const Icon(
+                        Icons.refresh,
+                        color: Colors.black,
+                      ),
+                    ),
+                  ),
+                  // const SizedBox(width: 5),
+                  SizedBox(
+                    height: 25,
+                    width: 25,
+                    child: InkWell(
+                      onTap: () {
+                        UrlLauncher.openInBrowser(
+                            'https://magiceden.io/marketplace/${collectionStat.symbol}');
+                      },
+                      child: ImagePlaceholder(
+                        height: 25,
+                        width: 25,
+                        imagePath: 'assets/images/me.png',
                         placeholder: Container(
-                          height: 30,
-                          width: 30,
+                          height: 25,
+                          width: 25,
                           color: Colors.transparent,
                         ),
                       ),
                     ),
-                    Text(
-                      widget.title,
-                      style: titleStyle,
-                    ),
-                  ],
-                ),
-                const SizedBox(
-                  width: 10,
-                ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      collectionStat.floorPrice == 0
-                          ? 'FP: ?'
-                          : 'FP: ${(collectionStat.floorPrice.toDouble() / 1000000000).toStringAsFixed(2)} Sol',
-                      style: textStyle,
-                    ),
-                    Text(
-                      collectionStat.totalListed == 0
-                          ? 'Listed: ?'
-                          : 'Listed: ${collectionStat.totalListed.toString()}',
-                      style: textStyle,
-                    ),
-                  ],
-                ),
-                const SizedBox(
-                  width: 5,
-                ),
-                const SizedBox(
-                  height: 25,
-                  width: 25,
-                  child: Icon(
-                    Icons.refresh,
-                    color: Colors.black,
                   ),
-                ),
-              ],
-            ),
+                ],
+              ),
+            ],
           ),
         ),
       ),
