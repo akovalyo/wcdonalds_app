@@ -53,8 +53,6 @@ class _WelcomeTabState extends State<WelcomeTab> {
                     crossAxisCellCount: 2,
                     mainAxisCellCount: 2,
                     child: WorkerTile(
-                      defaultImage:
-                          'https://testlaunchmynft.mypinata.cloud/ipfs/QmT5mjn82ivmNzykGcyQMmWhudUpvQwGhTQwSRozEj5Tbh/70.png',
                       color: Color(0xFFF48FB1),
                       keyWidget: Key('workerImageOne'),
                     )),
@@ -85,8 +83,6 @@ class _WelcomeTabState extends State<WelcomeTab> {
                     mainAxisCellCount: 3,
                     child: WorkerTile(
                       color: Color(0xfff6d61c),
-                      defaultImage:
-                          'https://testlaunchmynft.mypinata.cloud/ipfs/QmT5mjn82ivmNzykGcyQMmWhudUpvQwGhTQwSRozEj5Tbh/1525.png',
                       keyWidget: Key('workerImageTwo'),
                     )),
                 StaggeredGridTile.count(
