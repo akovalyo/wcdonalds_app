@@ -38,7 +38,8 @@ class _CollectionsStatTileState extends State<CollectionsStatTile> {
   void getFloorPrice(String symbol) async {
     try {
       final response = await Request.get(
-          'https://api-mainnet.magiceden.dev/v2/collections/$symbol/stats');
+        'https://api-mainnet.magiceden.dev/v2/collections/$symbol/stats',
+      );
       setState(() {
         collectionStat.update(response['floorPrice'], response['listedCount']);
       });
