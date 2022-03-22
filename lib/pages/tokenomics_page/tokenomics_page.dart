@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
 import 'package:flutter/scheduler.dart' show timeDilation;
 
 import 'expandable_containers/staking_game_container.dart';
