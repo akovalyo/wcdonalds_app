@@ -31,6 +31,7 @@ class _WelcomeTabState extends State<WelcomeTab> {
         padding: const EdgeInsets.all(8.0),
         width: AppTheme.maxWidthWidget,
         child: ListView(
+          primary: false,
           children: [
             StaggeredGrid.count(
               crossAxisCount: 5,

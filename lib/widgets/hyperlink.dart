@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:wcdonalds_app/models/platform.dart';
 import 'package:webview_flutter/webview_flutter.dart';
+import 'package:provider/provider.dart';
 
 import '../navigation/routes.dart';
 import '../models/web_view_extra_wrapper.dart';
+import '../models/app_state.dart';
+import '../models/url_launcher.dart';
 
 class Hyperlink extends StatelessWidget {
   final String title;
@@ -27,18 +31,23 @@ class Hyperlink extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final AppState appState = context.read<AppState>();
     return InkWell(
       mouseCursor: mouseCursor ?? SystemMouseCursors.click,
       onTap: onTap ??
           () {
             if (link.startsWith('http')) {
-              context.push(Routes.webView.path,
-                  extra: WebViewExtraWrapper(
-                      title: title,
-                      webView: WebView(
-                        initialUrl: link,
-                        javascriptMode: JavascriptMode.unrestricted,
-                      )));
+              if (appState.platform == PlatformInfo.web) {
+                UrlLauncher.openInBrowser(link);
+              } else {
+                context.push(Routes.webView.path,
+                    extra: WebViewExtraWrapper(
+                        title: title,
+                        webView: WebView(
+                          initialUrl: link,
+                          javascriptMode: JavascriptMode.unrestricted,
+                        )));
+              }
             } else {
               context.go(link);
             }
