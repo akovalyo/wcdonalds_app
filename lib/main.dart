@@ -27,6 +27,7 @@ class _WcdonaldsAppState extends State<WcdonaldsApp> {
   @override
   void initState() {
     _appState.initializeApp();
+
     _goRouter = GoRouter(
         initialLocation: Routes.splash.path,
         routes: [

@@ -1,14 +1,14 @@
-import 'dart:math';
-import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:go_router/go_router.dart';
+import 'package:wcdonalds_app/models/platform.dart';
 import 'package:webview_flutter/webview_flutter.dart';
+import 'package:provider/provider.dart';
 
 import '../../navigation/routes.dart';
 import '../../models/web_view_extra_wrapper.dart';
 import '../../models/url_launcher.dart';
-import '../../widgets/hyperlink.dart';
+import '../../models/app_state.dart';
 import 'tiles.dart';
 
 class WelcomeTab extends StatefulWidget {
@@ -23,6 +23,8 @@ class _WelcomeTabState extends State<WelcomeTab> {
 
   @override
   Widget build(BuildContext context) {
+    final AppState appState = context.read<AppState>();
+    print(appState.platform);
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: ListView(
@@ -98,26 +100,33 @@ class _WelcomeTabState extends State<WelcomeTab> {
               StaggeredGridTile.count(
                 crossAxisCellCount: 3,
                 mainAxisCellCount: 1,
-                child: Container(
-                  color: Theme.of(context).colorScheme.primary,
+                child: InkWell(
+                  onTap: () {
+                    if (appState.platform == PlatformInfo.web) {
+                      UrlLauncher.openInBrowser('https://wcdonalds.io');
+                    } else {
+                      context.push(
+                        Routes.webView.path,
+                        extra: WebViewExtraWrapper(
+                            title: 'wcdonalds.io',
+                            webView: const WebView(
+                              initialUrl: 'https://wcdonalds.io',
+                              javascriptMode: JavascriptMode.unrestricted,
+                            )),
+                      );
+                    }
+                  },
                   child: Container(
                     color: Theme.of(context).colorScheme.primary,
                     child: Center(
-                      child: Hyperlink(
-                        title: 'wcdonalds.io',
-                        color: Colors.black,
-                        underline: false,
-                        onTap: () {
-                          context.push(
-                            Routes.webView.path,
-                            extra: WebViewExtraWrapper(
-                                title: 'wcdonalds.io',
-                                webView: const WebView(
-                                  initialUrl: 'https://wcdonalds.io',
-                                  javascriptMode: JavascriptMode.unrestricted,
-                                )),
-                          );
-                        },
+                      child: Text(
+                        'wcdonalds.io',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontFamily:
+                              Theme.of(context).textTheme.bodyText1?.fontFamily,
+                          fontSize: 18,
+                        ),
                       ),
                     ),
                   ),
