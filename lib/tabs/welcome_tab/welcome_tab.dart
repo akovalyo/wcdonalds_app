@@ -10,7 +10,11 @@ import '../../navigation/routes.dart';
 import '../../models/web_view_extra_wrapper.dart';
 import '../../models/url_launcher.dart';
 import '../../models/app_state.dart';
+import 'collections_stat_tile_web.dart';
 import 'tiles.dart';
+
+//temp
+import '../../models/collection_stat.dart';
 
 class WelcomeTab extends StatefulWidget {
   const WelcomeTab({Key? key}) : super(key: key);
@@ -162,9 +166,18 @@ class _WelcomeTabState extends State<WelcomeTab> {
                   mainAxisCellCount: 1,
                   child: Container(
                     color: Colors.pink[400],
-                    child: const CollectionsStatTile(
-                      title: 'WORKERS',
-                    ),
+                    //TODO: temp
+                    child: appState.platform == PlatformInfo.web
+                        ? CollectionsStatTileWeb(
+                            title: 'WORKERS',
+                            collectionStat: CollectionStat(
+                              symbol: CollectionStat.workerSymbol,
+                              imagePath: 'assets/images/worker_wback.png',
+                            ),
+                          )
+                        : const CollectionsStatTile(
+                            title: 'WORKERS',
+                          ),
                   ),
                 ),
                 StaggeredGridTile.count(
@@ -172,9 +185,16 @@ class _WelcomeTabState extends State<WelcomeTab> {
                   mainAxisCellCount: 1,
                   child: Container(
                     color: Colors.limeAccent[400],
-                    child: const CollectionsStatTile(
-                      title: 'WANAGERS',
-                    ),
+                    child: appState.platform == PlatformInfo.web
+                        ? CollectionsStatTileWeb(
+                            title: 'WANAGERS',
+                            collectionStat: CollectionStat(
+                                symbol: CollectionStat.wanagerSymbol,
+                                imagePath: 'assets/images/wanager.png'),
+                          )
+                        : const CollectionsStatTile(
+                            title: 'WANAGERS',
+                          ),
                   ),
                 ),
                 StaggeredGridTile.count(

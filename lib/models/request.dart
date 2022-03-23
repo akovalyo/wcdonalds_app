@@ -21,6 +21,7 @@ class Request {
   static Future<Map<String, dynamic>> get(String url,
       {Map<String, String>? headers}) async {
     final response = await http.get(Uri.parse(url), headers: headers);
+
     if (response.statusCode == 200) {
       final jsonResponse =
           convert.jsonDecode(response.body) as Map<String, dynamic>;

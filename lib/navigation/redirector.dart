@@ -15,6 +15,9 @@ class Redirector {
 
   String? redirect(GoRouterState state, AppState appState) {
     final current = Uri(path: state.subloc, queryParameters: state.queryParams);
+    if (Routes.all.contains(current.toString())) {
+      return Routes.error.path;
+    }
     for (final redirect in _redirects) {
       if (redirect.check(state, appState)) {
         final uri = redirect.getUri(state, appState);

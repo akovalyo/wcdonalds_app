@@ -69,6 +69,9 @@ class _CollectionsStatTileState extends State<CollectionsStatTile> {
       fontFamily: Theme.of(context).textTheme.bodyText1?.fontFamily,
       fontSize: 12,
     );
+    final String meCollectionLink =
+        'https://magiceden.io/marketplace/${collectionStat.symbol}';
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8.0),
       child: Center(
@@ -81,17 +84,22 @@ class _CollectionsStatTileState extends State<CollectionsStatTile> {
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  SizedBox(
-                    height: 30,
-                    width: 30,
-                    child: ImagePlaceholder(
+                  InkWell(
+                    onTap: () {
+                      UrlLauncher.openInBrowser(meCollectionLink);
+                    },
+                    child: SizedBox(
                       height: 30,
                       width: 30,
-                      imagePath: collectionStat.imagePath,
-                      placeholder: Container(
+                      child: ImagePlaceholder(
                         height: 30,
                         width: 30,
-                        color: Colors.transparent,
+                        imagePath: collectionStat.imagePath,
+                        placeholder: Container(
+                          height: 30,
+                          width: 30,
+                          color: Colors.transparent,
+                        ),
                       ),
                     ),
                   ),
@@ -144,14 +152,12 @@ class _CollectionsStatTileState extends State<CollectionsStatTile> {
                       ),
                     ),
                   ),
-                  // const SizedBox(width: 5),
                   SizedBox(
                     height: 25,
                     width: 25,
                     child: InkWell(
                       onTap: () {
-                        UrlLauncher.openInBrowser(
-                            'https://magiceden.io/marketplace/${collectionStat.symbol}');
+                        UrlLauncher.openInBrowser(meCollectionLink);
                       },
                       child: ImagePlaceholder(
                         height: 25,

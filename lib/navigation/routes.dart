@@ -54,6 +54,15 @@ class Routes {
     ),
   );
 
+  static final List<String> all = [
+    splash.path,
+    home.path,
+    error.path,
+    tokenomics.path,
+    faq.path,
+    webView.path,
+  ];
+
   static void popPageHandler(BuildContext context, String defaultPath) {
     try {
       context.pop();
