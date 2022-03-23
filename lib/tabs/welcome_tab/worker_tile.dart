@@ -8,20 +8,19 @@ class WorkerTile extends StatefulWidget {
   final Color color;
 
   final Key keyWidget;
-  final String defaultImage;
-  const WorkerTile(
-      {Key? key,
-      required this.color,
-      required this.keyWidget,
-      required this.defaultImage})
-      : super(key: key);
+
+  const WorkerTile({
+    Key? key,
+    required this.color,
+    required this.keyWidget,
+  }) : super(key: key);
 
   @override
   State<WorkerTile> createState() => _WorkerTileState();
 }
 
 class _WorkerTileState extends State<WorkerTile> {
-  late String workerImage;
+  String workerImage = '';
 
   Future<String> randomImage() {
     return Future(() async {
@@ -34,7 +33,7 @@ class _WorkerTileState extends State<WorkerTile> {
     });
   }
 
-  void loadRandomImage(BuildContext context) async {
+  void loadRandomImage(BuildContext? context) async {
     try {
       final newUrl = await randomImage();
       if (newUrl.isNotEmpty) {
@@ -45,18 +44,20 @@ class _WorkerTileState extends State<WorkerTile> {
         throw Exception('Failed to load image');
       }
     } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: const Text('Faild to load image'),
-          backgroundColor: Theme.of(context).errorColor.withOpacity(0.7),
-        ),
-      );
+      if (context != null) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: const Text('Faild to load image'),
+            backgroundColor: Theme.of(context).errorColor.withOpacity(0.7),
+          ),
+        );
+      }
     }
   }
 
   @override
   void initState() {
-    workerImage = widget.defaultImage;
+    loadRandomImage(context);
     super.initState();
   }
 
@@ -69,8 +70,12 @@ class _WorkerTileState extends State<WorkerTile> {
       },
       child: Container(
         color: widget.color,
-        child: ImagePlaceholder(
-            placeholder: Container(), fit: BoxFit.fill, imagePath: workerImage),
+        child: workerImage.isNotEmpty
+            ? ImagePlaceholder(
+                placeholder: Container(),
+                fit: BoxFit.fill,
+                imagePath: workerImage)
+            : Container(),
       ),
     );
   }

@@ -178,22 +178,7 @@ class _WhappyMealContainerState extends State<WhappyMealContainer> {
                 ),
                 TextSpan(
                   text:
-                      '65% chances to get a WcDonalds Toy from your Whappy Meal. If you collect all toys from the collection you will enter in a raffle for a surprise NFT.',
-                  style: AppTheme.richTextBody1Black(context),
-                ),
-              ],
-            ),
-          ),
-          RichText(
-            text: TextSpan(
-              children: [
-                TextSpan(
-                  text: '• Low tier NFTs: ',
-                  style: AppTheme.richTextBody1Black(context, bold: true),
-                ),
-                TextSpan(
-                  text:
-                      'Other collections NFTs have a 20% chances to come in a Whappy Meal.',
+                      '60% chances to get a WcDonalds Toy from your Whappy Meal. If you collect all toys from the collection you will enter in a raffle for a surprise NFT.',
                   style: AppTheme.richTextBody1Black(context),
                 ),
               ],
@@ -208,7 +193,7 @@ class _WhappyMealContainerState extends State<WhappyMealContainer> {
                 ),
                 TextSpan(
                   text:
-                      'More valuable NFTs wil lhave a 5% chances to come in a Wappy Meal.',
+                      'Other collections NFTs have a 20% chances to come in a Whappy Meal.',
                   style: AppTheme.richTextBody1Black(context),
                 ),
               ],
@@ -218,14 +203,35 @@ class _WhappyMealContainerState extends State<WhappyMealContainer> {
             text: TextSpan(
               children: [
                 TextSpan(
-                  text: '• Unlucky: ',
+                  text: '• WcTicket: ',
                   style: AppTheme.richTextBody1Black(context, bold: true),
                 ),
                 TextSpan(
-                  text: '10% chances to get nothing.',
+                  text:
+                      '10% chances to get a ticket with surprises (Whappy Meal, wcdollars, WL, etc)',
                   style: AppTheme.richTextBody1Black(context),
                 ),
               ],
+            ),
+          ),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: RichText(
+              text: TextSpan(
+                children: [
+                  TextSpan(
+                    text: '• Unlucky: ',
+                    style: AppTheme.richTextBody1Black(
+                      context,
+                      bold: true,
+                    ),
+                  ),
+                  TextSpan(
+                    text: '10% chances to get nothing',
+                    style: AppTheme.richTextBody1Black(context),
+                  ),
+                ],
+              ),
             ),
           ),
         ],

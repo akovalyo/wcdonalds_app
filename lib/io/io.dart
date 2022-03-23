@@ -45,7 +45,7 @@ Future<void> saveNftCard(
     }
     //Save image on iOS
   } else if (platform == PlatformInfo.ios) {
-    final status = await Permission.photos.status;
+    // final status = await Permission.photos.status;
 
     if (await requestPermission(Permission.photos)) {
       ImageGallerySaver.saveImage(

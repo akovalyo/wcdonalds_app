@@ -294,9 +294,9 @@ class TokenomicsPage extends StatelessWidget {
                             vertical: verticalPadding,
                             horizontal: horizontalPadding),
                         child: ExpandableContainer(
-                          titleWidget:
-                              const TokenomicsTitleWidget(title: 'WCTOYS'),
-                          expandedHeight: 500,
+                          titleWidget: const TokenomicsTitleWidget(
+                              title: 'WCTOYS & WCTICKETS'),
+                          expandedHeight: 620,
                           color: const Color.fromRGBO(174, 213, 129, 1),
                           child: TokenomicsContainerDefault(
                             imagePath: 'assets/images/toys.png',
@@ -304,7 +304,7 @@ class TokenomicsPage extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 const TextParagraph(
-                                    'The most common drop from our Whappy Meals are toys. These will have some utility also, so they will have value beyond the collectible Meel.'),
+                                    'The most common drop from our Whappy Meals are toys. These will have some utility also, so they will have value beyond the collectible part.'),
                                 const SizedBox(height: 12),
                                 RichText(
                                   text: TextSpan(
@@ -328,18 +328,60 @@ class TokenomicsPage extends StatelessWidget {
                                   text: TextSpan(
                                     children: [
                                       TextSpan(
-                                        text: '• Recycle: ',
+                                        text: '• Fees: ',
                                         style: AppTheme.richTextBody1Black(
                                             context,
                                             bold: true),
                                       ),
                                       TextSpan(
                                         text:
-                                            'You can use (burn) 3 TOYS to open a new Meal',
+                                            '80% of all TOYS fees in second market sales will be added to the Whappy Meals sustainability',
                                         style: AppTheme.richTextBody1Black(
                                             context),
                                       ),
                                     ],
+                                  ),
+                                ),
+                                const Divider(
+                                  color: Colors.yellow,
+                                ),
+                                const SizedBox(height: 12),
+                                const TextParagraph(
+                                    'You will also be able to get WcTickets, these special tickets will give you things like:'),
+                                const SizedBox(height: 12),
+                                const Align(
+                                  alignment: Alignment.centerLeft,
+                                  child: TextParagraph(
+                                    '• Another Whappy Meal',
+                                    bold: true,
+                                  ),
+                                ),
+                                const Align(
+                                  alignment: Alignment.centerLeft,
+                                  child: TextParagraph(
+                                    '• \$WcDollars',
+                                    bold: true,
+                                  ),
+                                ),
+                                Align(
+                                  alignment: Alignment.centerLeft,
+                                  child: RichText(
+                                    text: TextSpan(
+                                      children: [
+                                        TextSpan(
+                                          text: '• Surprises: ',
+                                          style: AppTheme.richTextBody1Black(
+                                              context,
+                                              bold: true),
+                                        ),
+                                        TextSpan(
+                                          text:
+                                              'Some things made by the dev team',
+                                          style: AppTheme.richTextBody1Black(
+                                              context),
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ],

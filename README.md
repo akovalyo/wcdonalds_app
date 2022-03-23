@@ -9,6 +9,16 @@
 
 Welcome to **Wcdonalds** - the best fast food enterprise on the Solana blockchain.
 
+---
+
+The app allows to:
+
+- Search the collection of workers NFTs and get rarity rank, wage;
+- Track the Sol price;
+- Track collection's floor price and total listed items on ME (currently is not available in the web app);
+- Get information about tokenomics, staking;
+- get answers to the most common questions.
+
 # Android App
 
 <p align="center">
@@ -22,9 +32,15 @@ Welcome to **Wcdonalds** - the best fast food enterprise on the Solana blockchai
 
 v0.2.0 released 03/15/2022
 
+# Web App
+
+### [Wacdonalds Web App](https://wcdonaldswebapp.web.app)
+
+<p>&nbsp;</p>
+
 # Ios App
 
-Comming soon...
+Apple didn't accept the app because it accesses digital content purchased outside the app, but that content isn't available to purchase in the app🤷‍♂️
 
 <p>&nbsp;</p>
 

@@ -10,26 +10,29 @@ class PlatformInfo {
   static String web = 'web';
 
   static Future<String> check() async {
-    String platform;
+    String platform = '';
 
-    if (defaultTargetPlatform == TargetPlatform.android ||
-        defaultTargetPlatform == TargetPlatform.fuchsia) {
-      platform = android;
-    }
-    // else if (defaultTargetPlatform == TargetPlatform.fuchsia) {
-    //   platform = fuchsia;
-    // }
-    else if (defaultTargetPlatform == TargetPlatform.iOS) {
-      platform = ios;
-    } else if (defaultTargetPlatform == TargetPlatform.windows) {
-      platform = windows;
-    } else if (defaultTargetPlatform == TargetPlatform.linux) {
-      platform = linux;
-    } else if (defaultTargetPlatform == TargetPlatform.macOS) {
-      platform = macOs;
-    } else {
+    if (kIsWeb) {
       platform = 'web';
+    } else {
+      if (defaultTargetPlatform == TargetPlatform.android ||
+          defaultTargetPlatform == TargetPlatform.fuchsia) {
+        platform = android;
+      }
+      // else if (defaultTargetPlatform == TargetPlatform.fuchsia) {
+      //   platform = fuchsia;
+      // }
+      else if (defaultTargetPlatform == TargetPlatform.iOS) {
+        platform = ios;
+      } else if (defaultTargetPlatform == TargetPlatform.windows) {
+        platform = windows;
+      } else if (defaultTargetPlatform == TargetPlatform.linux) {
+        platform = linux;
+      } else if (defaultTargetPlatform == TargetPlatform.macOS) {
+        platform = macOs;
+      }
     }
+
     return Future.value(platform);
   }
 }
