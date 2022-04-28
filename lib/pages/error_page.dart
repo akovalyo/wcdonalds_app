@@ -24,35 +24,35 @@ class ErrorPage extends StatelessWidget {
         ),
       ),
       drawer: const WcDrawer(),
-      body: Center(
-        child: Expanded(
-          child: Padding(
-            padding: const EdgeInsets.all(40.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const SizedBox(
-                    width: 150,
-                    height: 150,
-                    child: Image(
-                        fit: BoxFit.fill,
-                        image: AssetImage('assets/images/worker_sad.png'))),
-                const SizedBox(
-                  height: 20,
-                ),
-                Text(
-                  'Oops! Looks like the page doesn\'t exist.',
-                  style: Theme.of(context).textTheme.headline3,
-                  textAlign: TextAlign.center,
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                const Hyperlink(
-                  title: 'Return to the Home page',
-                ),
-              ],
-            ),
+      body: Padding(
+        padding: const EdgeInsets.all(40.0),
+        child: Align(
+          alignment: Alignment.center,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const SizedBox(
+                  width: 150,
+                  height: 150,
+                  child: Image(
+                      fit: BoxFit.fill,
+                      image: AssetImage('assets/images/worker_sad.png'))),
+              const SizedBox(
+                height: 20,
+              ),
+              Text(
+                'Oops! Looks like the page doesn\'t exist.',
+                style: Theme.of(context).textTheme.headline3,
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              const Hyperlink(
+                title: 'Return to the Home page',
+              ),
+            ],
           ),
         ),
       ),
