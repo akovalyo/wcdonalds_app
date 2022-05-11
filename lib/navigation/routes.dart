@@ -54,6 +54,15 @@ class Routes {
     ),
   );
 
+  static final calculator = GoRoute(
+    name: 'calculator',
+    path: '/calculator',
+    pageBuilder: (BuildContext context, GoRouterState state) =>
+        PaycheckCalculatorPage.page(
+      key: state.pageKey,
+    ),
+  );
+
   static final List<String> all = [
     splash.path,
     home.path,
@@ -61,6 +70,7 @@ class Routes {
     tokenomics.path,
     faq.path,
     webView.path,
+    calculator.path
   ];
 
   static void popPageHandler(BuildContext context, String defaultPath) {

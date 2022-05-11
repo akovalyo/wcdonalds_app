@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:package_info_plus/package_info_plus.dart';
+import 'package:wcdonalds_app/navigation/routes.dart';
+import 'package:go_router/go_router.dart';
 
 import '../models/app_state.dart';
 import '../widgets/hyperlink.dart';
@@ -72,6 +74,30 @@ class _WcDrawerState extends State<WcDrawer> {
                     ),
                   ),
                   Padding(
+                    padding: const EdgeInsets.only(
+                      top: 20,
+                      left: 20,
+                      right: 20,
+                      bottom: 10,
+                    ),
+                    child: Hyperlink(
+                        link: Routes.home.path,
+                        underline: false,
+                        color: Theme.of(context).textTheme.bodyText1?.color,
+                        title: 'Home'),
+                  ),
+                  // Padding(
+                  //   padding: const EdgeInsets.symmetric(
+                  //     horizontal: 20,
+                  //     vertical: 10,
+                  //   ),
+                  //   child: Hyperlink(
+                  //       link: Routes.calculator.path,
+                  //       underline: false,
+                  //       color: Theme.of(context).textTheme.bodyText1?.color,
+                  //       title: 'Paycheck Calculator'),
+                  // ),
+                  Padding(
                     padding: const EdgeInsets.symmetric(
                       horizontal: 20,
                       vertical: 10,
@@ -79,7 +105,10 @@ class _WcDrawerState extends State<WcDrawer> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const Text('Dark Mode'),
+                        Text(
+                          'Dark Mode',
+                          style: Theme.of(context).textTheme.bodyText1,
+                        ),
                         Switch(
                           value: appState.isDarkTheme,
                           onChanged: (_) {

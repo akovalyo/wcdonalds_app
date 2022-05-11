@@ -33,6 +33,7 @@ class Hyperlink extends StatelessWidget {
   Widget build(BuildContext context) {
     final AppState appState = context.read<AppState>();
     return InkWell(
+      hoverColor: Colors.transparent,
       mouseCursor: mouseCursor ?? SystemMouseCursors.click,
       onTap: onTap ??
           () {

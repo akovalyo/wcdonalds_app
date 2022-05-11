@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../interfaces/app_state_interface.dart';
-import 'app_cache.dart';
 import 'platform.dart';
 
 class AppState extends AppStateInterface with ChangeNotifier {
   bool _isInitialized = false;
   bool _isDarkTheme = false;
   String _platform = PlatformInfo.android;
-  final AppCache _appCache = AppCache();
   Uri? _destUri;
 
   @override
@@ -25,7 +24,8 @@ class AppState extends AppStateInterface with ChangeNotifier {
 
   @override
   void initializeApp() async {
-    _isDarkTheme = await _appCache.isDarkTheme();
+    final prefs = await SharedPreferences.getInstance();
+    _isDarkTheme = prefs.getBool('darkTheme') ?? false;
     _platform = await PlatformInfo.check();
     _isInitialized = true;
     notifyListeners();
@@ -34,7 +34,9 @@ class AppState extends AppStateInterface with ChangeNotifier {
   @override
   void changeTheme() async {
     _isDarkTheme = !_isDarkTheme;
-    await _appCache.saveTheme(_isDarkTheme);
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setBool('darkTheme', _isDarkTheme);
+
     notifyListeners();
   }
 
