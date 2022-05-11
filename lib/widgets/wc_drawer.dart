@@ -86,17 +86,17 @@ class _WcDrawerState extends State<WcDrawer> {
                         color: Theme.of(context).textTheme.bodyText1?.color,
                         title: 'Home'),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 20,
-                      vertical: 10,
-                    ),
-                    child: Hyperlink(
-                        link: Routes.calculator.path,
-                        underline: false,
-                        color: Theme.of(context).textTheme.bodyText1?.color,
-                        title: 'Paycheck Calculator'),
-                  ),
+                  // Padding(
+                  //   padding: const EdgeInsets.symmetric(
+                  //     horizontal: 20,
+                  //     vertical: 10,
+                  //   ),
+                  //   child: Hyperlink(
+                  //       link: Routes.calculator.path,
+                  //       underline: false,
+                  //       color: Theme.of(context).textTheme.bodyText1?.color,
+                  //       title: 'Paycheck Calculator'),
+                  // ),
                   Padding(
                     padding: const EdgeInsets.symmetric(
                       horizontal: 20,

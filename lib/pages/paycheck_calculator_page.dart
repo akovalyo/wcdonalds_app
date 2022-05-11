@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../widgets/wc_bar.dart';
 import '../theme/theme.dart';
 import '../widgets/wc_drawer.dart';
+import '../models/paycheck_calculator.dart';
 
 class PaycheckCalculatorPage extends StatefulWidget {
   const PaycheckCalculatorPage({Key? key}) : super(key: key);
@@ -17,6 +18,22 @@ class PaycheckCalculatorPage extends StatefulWidget {
 }
 
 class _PaycheckCalculatorPageState extends State<PaycheckCalculatorPage> {
+  final _formKey = GlobalKey<FormState>();
+  final _workersListController = TextEditingController();
+  final PaycheckCalculator calculator = PaycheckCalculator();
+
+  @override
+  void initState() {
+    calculator.load();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _workersListController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,8 +45,34 @@ class _PaycheckCalculatorPageState extends State<PaycheckCalculatorPage> {
         ),
       ),
       drawer: const WcDrawer(),
-      body: const Center(
-        child: Text('Paycheck Calculator'),
+      body: Align(
+        alignment: Alignment.topCenter,
+        child: SingleChildScrollView(
+          primary: false,
+          child: Column(
+            children: [
+              const SizedBox(
+                height: 20,
+              ),
+              Text('Paycheck calculator',
+                  style: Theme.of(context).textTheme.headline4),
+              const SizedBox(
+                height: 20,
+              ),
+              const Text('Workers on duty:'),
+              const SizedBox(
+                height: 20,
+              ),
+              SizedBox(
+                width: 150,
+                child: ElevatedButton(
+                  onPressed: () {},
+                  child: const Text('Add workers'),
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
