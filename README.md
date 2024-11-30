@@ -7,18 +7,18 @@
 ![](https://img.shields.io/badge/dynamic/yaml?url=https://raw.githubusercontent.com/akovalyo/wcdonalds_app/main/pubspec.yaml?&label=v&query=$.version&color=orange)
 ![GitHub](https://img.shields.io/github/license/akovalyo/wcdonalds_app)
 
-Welcome to **Wcdonalds** - the best fast food enterprise on the Solana blockchain.
+Welcome to **Wcdonalds** - NFT meme project on the Solana blockchain.
 
+*This app was created by a community member for the Wcdonalds NFT collection, with no official affiliation to the project owners.*
 ---
 
-The app allows to:
-
-- Search the collection of workers NFTs and get rarity rank, wage;
-- Track the Sol price;
-- Track collection's floor price and total listed items on ME (currently is not available in the web app);
-- Get information about tokenomics, staking;
-- get answers to the most common questions.
-
+Features
+* Search the collection of workers NFTs: View rarity rank, and wage information.
+* Track Sol Price: Monitor the price of Solana cryptocurrency.
+* Track Collection's Floor Price: Monitor the floor price of the NFT collection (web app feature currently unavailable).
+* Tokenomics and Staking Information: Get detailed information about how the project's tokens work and how to stake them.
+* FAQ: Answers to the most common questions regarding Wcdonalds NFTs.
+* 
 # Android App
 
 <p align="center">
@@ -27,10 +27,10 @@ The app allows to:
 <p>&nbsp;</p>
 
 <p align="center">
-   <a href="https://play.google.com/store/apps/details?id=com.wcdonalds.app"><img src="https://github.com/akovalyo/wcdonalds_app/blob/main/assets/images/play_store.png" width="250"></a>
+   <a href="https://github.com/akovalyo/wcdonalds_app/releases/tag/v0.2.1"><img src="https://github.com/akovalyo/wcdonalds_app/blob/main/assets/images/play_store.png" width="250"></a>
 </p>
 
-v0.2.0 released 03/15/2022
+v0.2.1 released 03/22/2022
 
 # Web App
 
@@ -40,7 +40,7 @@ v0.2.0 released 03/15/2022
 
 # Ios App
 
-Apple didn't accept the app because it accesses digital content purchased outside the app, but that content isn't available to purchase in the app🤷‍♂️
+Apple has not approved the app for distribution due to issues with in-app purchases of digital content not being available within the app itself.🤷‍♂️
 
 <p>&nbsp;</p>
 
@@ -56,18 +56,8 @@ Apple didn't accept the app because it accesses digital content purchased outsid
 
 ---
 
-**Wcdonalds** is recognized because of its great workers and diamond hands holders. We hire and train Wcworkers. Every worker is completely unique and has its own rarity and attributes.
+**Disclaimer:**
 
-### Our mission:
-
-- Wcdonalds mission is to create an empire of Wcdonalds franchises around the world and become the best fast food enterprise in all the metaverse!
-
-- Create a fun and stable NFT project that brings joy and entertainment to the Solana chain.
-
-### What do we offer:
-
-- Deflationary collection
-- Gamified and community-driven activities on Discord. Be part of the Wcdonalds Lore
-- Weekly newspaper - The WcNews
-- Staking for $WcDollars
-- Whappy Meals: Surprise box you can buy with $WcDollars
+* This app is developed independently by a holder of the Wcdonalds NFT collection. 
+* The developer has no official connection with the original creators or owners of the Wcdonalds project.
+* All information provided in this app is based on data available at the time of development and might not reflect real-time changes or project updates.
