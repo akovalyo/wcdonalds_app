@@ -18,7 +18,7 @@ Features
 * Track Collection's Floor Price: Monitor the floor price of the NFT collection (web app feature currently unavailable).
 * Tokenomics and Staking Information: Get detailed information about how the project's tokens work and how to stake them.
 * FAQ: Answers to the most common questions regarding Wcdonalds NFTs.
-* 
+  
 # Android App
 
 <p align="center">
@@ -41,18 +41,6 @@ v0.2.1 released 03/22/2022
 # Ios App
 
 Apple has not approved the app for distribution due to issues with in-app purchases of digital content not being available within the app itself.🤷‍♂️
-
-<p>&nbsp;</p>
-
-<p align="center">
-  <a href="#"><img src="https://github.com/akovalyo/wcdonalds_app/blob/main/assets/images/app_store.png" width="250"></a>
-</p>
-
----
-
-<p align="center">
-  <a href="https://discord.gg/cWHBN4XJNj"><img src="https://github.com/akovalyo/wcdonalds_app/blob/main/assets/images/discord_logo_vector.png"></a>
-</p>
 
 ---
 
